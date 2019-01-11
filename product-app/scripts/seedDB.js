@@ -1,13 +1,7 @@
-const mongoose = require("mongoose");
-const db = require("../models");
+const mongoose = require('mongoose');
+const Product = require("../models/product");
 
 // This file empties the Products collection and inserts the product below
-
-mongoose.connect(
-  process.env.MONGOLAB_URI,
-  "mongodb://localhost:27017/productlist", {useNewUrlParser: true}
-);
-
 const productSeed = [
   {
     title: "The New Dead Zone",
@@ -123,14 +117,25 @@ const productSeed = [
   }
 ];
 
-db.Product
-  .remove({})
-  .then(() => db.Product.collection.insertMany(productSeed))
-  .then(data => {
-    console.log(data.result.n + " records inserted!");
-    process.exit(0);
-  })
-  .catch(err => {
-    console.error(err);
-    process.exit(1);
-  });
+mongoose.connect(
+  process.env.MONGOLAB_URI ||
+  "mongodb://localhost/productlist", { useNewUrlParser: true }
+),
+console.log("Adding Seeds");
+
+productSeed.map(data => {
+  const product = new Product(data);
+  product.save();
+  product
+    .remove({})
+    .then(() => product.collection.insertMany(productSeed))
+    .then(data => {
+      console.log(data.result.n + " records inserted!");
+      process.exit(0);
+    })
+    .catch(err => {
+      console.error(err);
+      process.exit(1);
+    });
+});
+

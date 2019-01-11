@@ -1,10 +1,9 @@
 const path = require("path");
 const router = require("express").Router();
 const apiRoutes = require("./api");
-const { generateToken, sendToken } = require('../client/src/utils/token.utils');
 
 // API Routes
-router.use("/api", apiRoutes || '/api/v1', apiRoutes);
+router.use("/api", apiRoutes);
 
 // make it client/build/index when in production
 // If no API routes are hit, send the React app
