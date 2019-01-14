@@ -1,25 +1,62 @@
-.App {
-  text-align: center;
+body  {
+  color:#000;
+  text-align:center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
+button, button {
+  background-color: tan;
+  border-radius: 25px;
+  padding: 5px 10px;
+  margin: 10px 10px;
+  box-shadow: 4px 4px #333;
+  border: 1px solid gray;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+button:hover, .button:hover {
+  background-color: lightblue;
+  box-shadow: 14px 14px #333;
 }
 
-.App-link {
-  color: #61dafb;
+.chris-long {
+  background-image: url("./images/chrislongfoundation.png");
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: 240px;
+  height: 85px;
+  transform: scale(.7);
+  transition: all .6s ease-in-out;
+  border: 2px solid white;
+}
+
+.chris-long:hover {
+  position:relative;
+  display:block;
+  transition: all 1.0s ease-in-out;
+  transform: scale(1.1);
+  background-color: white;
+}
+.footer {
+  position: relative;
+  width: 100%;
+  height: 150px;
+  background-color: #333;
+  bottom: 0;
+  margin-bottom: 0;
+  padding-top: 20px;
+  border-top: solid lightcoral 10px;
+  padding-bottom: 0;
+  right: 0;
+  left: 0;
+  overflow-x: hidden;
+}
+
+.product-img {
+  width: 80%;
+  height: 150px;
+  border-radius: 25px 25px 0px 0px;
 }
 
 @keyframes App-logo-spin {

@@ -1,18 +1,20 @@
 import React, { Component } from "react";
-import DeleteBtn from "../components/DeleteBtn";
 import Jumbotron from "../components/Jumbotron";
 import API from "../utils/API";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
-import { Input, TextArea, FormBtn } from "../components/Form";
+import Product from '../components/Product/Product';
 
 class Products extends Component {
   state = {
     products: [],
-    title: "",
-    author: "",
-    synopsis: ""
+    name: "",
+    category: "",
+    cost: "",
+    brand: "",
+    size: "",
+    color: ""
   };
 
   componentDidMount() {
@@ -22,43 +24,43 @@ class Products extends Component {
   loadProducts = () => {
     API.getProducts()
       .then(res =>
-        this.setState({ products: res.data, title: "", author: "", synopsis: "" })
+        this.setState({ products: res.data, name: "", category: "", brand: "", cost: "", size: "", color: "" })
       )
       .catch(err => console.log(err));
   };
 
-  deleteProduct = id => {
-    API.deleteProduct(id)
-      .then(res => this.loadProducts())
-      .catch(err => console.log(err));
-  };
+  // deleteProduct = id => {
+  //   API.deleteProduct(id)
+  //     .then(res => this.loadProducts())
+  //     .catch(err => console.log(err));
+  // };
 
-  handleInputChange = event => {
-    const { name, value } = event.target;
-    this.setState({
-      [name]: value
-    });
-  };
+  // handleInputChange = event => {
+  //   const { name, value } = event.target;
+  //   this.setState({
+  //     [name]: value
+  //   });
+  // };
 
-  handleFormSubmit = event => {
-    event.preventDefault();
-    if (this.state.title && this.state.author) {
-      API.saveProduct({
-        title: this.state.title,
-        author: this.state.author,
-        synopsis: this.state.synopsis
-      })
-        .then(res => this.loadProducts())
-        .catch(err => console.log(err));
-    }
-  };
+  // handleFormSubmit = event => {
+  //   event.preventDefault();
+  //   if (this.state.title && this.state.author) {
+  //     API.saveProduct({
+  //       title: this.state.title,
+  //       author: this.state.author,
+  //       synopsis: this.state.synopsis
+  //     })
+  //       .then(res => this.loadProducts())
+  //       .catch(err => console.log(err));
+  //   }
+  // };
 
   render() {
     return (
       <Container fluid>
         <Row>
-          <Col size="md-6">
-            <Jumbotron>
+          {/* <Col size="md-6"> */}
+            {/* <Jumbotron>
               <h1>What Products Should I Read?</h1>
             </Jumbotron>
             <form>
@@ -86,11 +88,11 @@ class Products extends Component {
               >
                 Submit Book
               </FormBtn>
-            </form>
-          </Col>
-          <Col size="md-6 sm-12">
+            </form> */}
+          {/* </Col> */}
+          <Col size="md-12 sm-12">
             <Jumbotron>
-              <h1>Products On My List</h1>
+              <h1>Product List</h1>
             </Jumbotron>
             {this.state.products.length ? (
               <List>
@@ -98,13 +100,23 @@ class Products extends Component {
                   <ListItem key={product._id}>
                     <Link to={"/products/" + product._id}>
                       <strong>
-                        {product.title} by {product.author}
+                        {product.name} by {product.brand}
                       </strong>
                     </Link>
-                    <DeleteBtn onClick={() => this.deleteProduct(product._id)} />
+                    {/* <DeleteBtn onClick={() => this.deleteProduct(product._id)} /> */}
                   </ListItem>
                 ))}
+                  <Row>
+                <Product /><Product />
+                </Row>
+                <Row>
+                <Product /><Product />
+                </Row>
+                <Row>
+                <Product /><Product />
+                </Row>
               </List>
+                
             ) : (
               <h3>No Results to Display</h3>
             )}

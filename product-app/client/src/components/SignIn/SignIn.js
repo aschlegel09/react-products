@@ -4,12 +4,22 @@ import FacebookLogin from 'react-facebook-login';
 import ReactModal from 'react-modal';
 import config from "../../config.json";
 
+// import queryString from "query-string";
+// componentWillMount() {
+//   var query = queryString.parse(this.props.location.search);
+//   if (query.token) {
+//     window.localStorage.setItem("jwt", query.token);
+//     this.props.history.push("/");
+//   }
+// }
+
 class SignIn extends Component {
   constructor() {
     super();
     this.state = {
       showModal: false,
       isAuthenticated: false,
+      isLoggedIn: false,
       user: null,
       token: ''
     };
@@ -19,7 +29,7 @@ class SignIn extends Component {
   }
 
   logout = (obj) => {
-    this.setState({ isAuthenticated: false, token: '', user: null })
+    this.setState({ isAuthenticated: false, token: '', user: null, isLoggedIn: false, showModal: false })
     console.log(obj + "\nlogged out");
   };
 
@@ -32,11 +42,12 @@ class SignIn extends Component {
       mode: 'cors',
       cache: 'default'
     };
-    fetch('http://localhost:4000/api/v1/auth/facebook', options).then(r => {
+    fetch('http://localhost:3001/api/v1/auth/facebook', options).then(r => {
       const token = r.headers.get('x-auth-token');
       r.json().then(user => {
         if (token) {
-          this.setState({ isAuthenticated: true, user, token })
+          this.setState({ isAuthenticated: true, user, token, isLoggedIn: true })
+          console.log("State changed");
         }
       });
     })
@@ -50,11 +61,11 @@ class SignIn extends Component {
       mode: 'cors',
       cache: 'default'
     };
-    fetch('http://localhost:4000/api/v1/auth/google', options).then(r => {
+    fetch('http://localhost:3001/api/v1/auth/google', options).then(r => {
       const token = r.headers.get('x-auth-token');
       r.json().then(user => {
         if (token) {
-          this.setState({ isAuthenticated: true, user, token })
+          this.setState({ isAuthenticated: true, user, token, isLoggedIn: true })
         }
       });
     })
@@ -62,9 +73,6 @@ class SignIn extends Component {
   onFailure = (error) => {
     alert(error);
   }
-
-  // componentDidMount() {
-  // }
 
   handleOpenModal() {
     this.setState({ showModal: true });
@@ -74,6 +82,11 @@ class SignIn extends Component {
     this.setState({ showModal: false });
   }
   render() {
+
+//     const isLoggedIn = this.state.isLoggedIn;
+// <div>
+//           The user is <b>{isLoggedIn ? 'currently' : 'not'}</b> logged in.
+//         </div>
     let content = !!this.state.isAuthenticated ? (
       <div>
         <p>Authenticated.</p>
@@ -91,25 +104,28 @@ class SignIn extends Component {
             autoLoad={false}
             fields="name,email,picture"
             callback={this.facebookResponse}
+            
           />
           <GoogleLogin
             clientId={config.GOOGLE_CLIENT_ID}
-            buttonText="Sign In with Google"
+            buttonText="LOGIN WITH GOOGLE"
             onSuccess={this.googleResponse}
             onFailure={this.onFailure}
+            className="button"
           />
         </div>
       );
     return (
+
       <div>
-        <button onClick={this.handleOpenModal}>Sign In Here!!</button>
+      
+        <button onClick={this.handleOpenModal}>Log In</button>
         <ReactModal
           ariaHideApp={false}
           isOpen={this.state.showModal}
           contentLabel="Social Media Login"
         >
           {content}
-
           <button onClick={this.logout} className="button">Log Out</button>
           <button onClick={this.handleCloseModal}>Close Window</button>
         </ReactModal>

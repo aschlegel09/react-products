@@ -1,0 +1,70 @@
+import React, { Component } from "react";
+import { Row, Container } from "../components/Grid";
+import HomeComponent from "../components/Home/Home";
+import BlogComponent from "../components/Blog/Blog";
+import API from "../utils/API";
+import { List, ListItem } from "../components/List/index";
+import { Link } from "react-router-dom";
+import Product from '../components/Product/Product';
+
+class Home extends Component {
+    state = {
+        products: [],
+        name: "",
+        category: "",
+        cost: "",
+        brand: "",
+        size: "",
+        color: ""
+    };
+
+    componentDidMount() {
+        this.loadProducts();
+    }
+
+    loadProducts = () => {
+        API.getProducts()
+            .then(res =>
+                this.setState({ products: res.data, name: "", category: "", brand: "", cost: "", size: "", color: "" })
+            )
+            .catch(err => console.log(err));
+    };
+
+    render() {
+        return (
+            <Container fluid className="homepage-bg">
+                <HomeComponent />
+                <Row>
+                    <Product>
+                            <List>
+                            {this.state.products.map(product => (
+                                    <ListItem key={product._id}>
+                                        <Link to={"/products/" + product._id}>
+                                            <strong>
+                                                {product.name} by {product.brand}
+                                            </strong>
+                                        </Link>
+                                    </ListItem>
+                            ))}
+                            </List>
+                    </Product>
+                    {/* <Product>
+                        <ListItem key={product._id}>
+                            <Link to={"/products/" + product._id}>
+                                <strong>
+                                    {product.name} by {product.brand}
+                                </strong>
+                            </Link>
+                        </ListItem>
+                    </Product> */}
+                </Row>
+                <Row>
+                    <BlogComponent /><BlogComponent />
+                </Row>
+
+            </Container>
+        );
+    }
+}
+
+export default Home;
