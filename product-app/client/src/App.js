@@ -10,6 +10,8 @@ import Home from "./pages/Home";
 import Cart from "./pages/Cart";
 import Profile from "./pages/Profile";
 import { Col, Row } from "./components/Grid/index";
+import About from "./pages/About";
+import Checkout from "./pages/Checkout";
 
 // const passport = require('passport');
 // const session = require('express-session');
@@ -39,6 +41,8 @@ class App extends Component {
             <Route exact path="/blog" component={Blog} />
             <Route exact path="/profile" component={Profile} />
             <Route exact path="/cart" component={Cart} />
+            <Route exact path="/checkout" component={Checkout} />
+            <Route exact path="/about" component={About} />
             <Route component={NoMatch} />
             {/* <Route exact path="/profile" component={Profile} /> */}
           </Switch>
@@ -61,7 +65,7 @@ class App extends Component {
           </Row>
             <Row>
             <Col size="md-3">
-                <p className="text-white">2019</p>
+                <a href="/about" className="text-white">About</a>
             </Col>
             <Col size="md-3">
                 <p className="text-white">2019</p>

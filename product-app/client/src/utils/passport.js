@@ -1,7 +1,13 @@
+'use strict';
+
+require('./mongoose.js');
 const passport = require("passport");
-const GoogleStrategy = require("passport-google-oauth").OAuth2Strategy;
-const FacebookStrategy = require("passport-facebook");
+const FacebookTokenStrategy = require('passport-facebook-token');
+const GoogleTokenStrategy = require('passport-google-token').Strategy;
+// const GoogleStrategy = require("passport-google-oauth").OAuth2Strategy;
+// const FacebookStrategy = require("passport-facebook");
 const User = require("../../../models");
+const config = require("../config.json");
 
 passport.serializeUser(function(user, done) {
  done(null, user);
@@ -11,44 +17,32 @@ passport.deserializeUser(function(user, done) {
  done(null, user);
 });
 
-var passport = require('passport')
-  , FacebookStrategy = require('passport-facebook').Strategy;
-var User = require('../models/User');
-
 passport.use(
-    new FacebookStrategy(
+    new FacebookTokenStrategy(
         {
-    // clientID: process.env.,
-    // clientSecret: "0d641e47f5d55af221ec80346f3f2d43",
-    // callbackURL: "http://127.0.0.1:3000/auth/facebook/callback"
+    clientID: config.FACEBOOK_APP_ID,
+    clientSecret: config.fbSecret
+    // callbackURL: config.fbCallbackUrl
   },
   function(accessToken, refreshToken, profile, done) {
-    User.findOrCreate(
-        {name: profile.displayName}, 
-        {name: profile.displayName,userid: profile.id}, 
+    User.upsertFbUser(accessToken, refreshToken, profile,
         function(err, user) {
-      if (err) { return done(err); }
-      done(null, user);
-    });
-  }
-));
+            return done(err, user);
+        });
+  }));
 
 passport.use(
- new GoogleStrategy(
+ new GoogleTokenStrategy(
   {
-   clientID: process.env.GOOGLE_CLIENT_ID,
-   clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-   callbackURL: "http://localhost:3001/auth/google/callback"
+   clientID: config.GOOGLE_CLIENT_ID,
+   clientSecret: config.GOOGLE_CLIENT_SECRET
+//    callbackURL: config.googleCallbackUrl
   },
   function(accessToken, refreshToken, profile, done) {
-   var userData = {
-    email: profile.emails[0].value,
-    name: profile.displayName,
-    token: accessToken
-   };
-   done(null, userData);
-  }
- )
-);
+   User.upsertGoogleUser(accessToken, refreshToken, profile,
+    function(err, user) {
+        return done (err, user);
+    });
+}));
 
 module.exports = passport;

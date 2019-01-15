@@ -1,10 +1,36 @@
 const path = require("path");
-const router = require("express").Router();
+const express = require("express");
+const router = express.Router();
 const apiRoutes = require("./api");
 const passport = require("passport");
+const { generateToken, sendToken } = require('../client/src/utils/token.utils.js');
+require('../client/src/utils/passport.js');
+// C:\Users\aschl\Desktop\bootcamp\react-products\product-app\client\src\utils\token.utils.js
 
 // API Routes
 router.use("/api", apiRoutes);
+
+router.route('auth/facebook').post(passport.authenticate('facebook-token', {session: false}), function(req, res, next) {
+  if(!req.user) {
+    return res.send(401, 'User Not Authenticated');
+  }
+  req.auth = {
+    id: req.user.id
+  };
+
+  next();
+}, generateToken, sendToken);
+
+router.route('/auth/google').post(passport.authenticate('google-token', {session: false}), function(req, res, next) {
+  if(!req.user) {
+    return res.send(401, 'User Not Authenticated');
+  }
+  req.auth = {
+    id: req.user.id
+  };
+
+  next();
+}, generateToken, sendToken);
 
 /* GET Google Authentication API. */
 router.get(

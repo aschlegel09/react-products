@@ -36,17 +36,20 @@ class Home extends Component {
                 <HomeComponent />
                 <Row>
                     <Product>
+                        {this.state.products.length ? (
                             <List>
-                            {this.state.products.map(product => (
+                                {this.state.products.map(product => (
                                     <ListItem key={product._id}>
                                         <Link to={"/products/" + product._id}>
                                             <strong>
                                                 {product.name} by {product.brand}
                                             </strong>
                                         </Link>
-                                    </ListItem>
-                            ))}
+                                    </ListItem>))}
                             </List>
+                            ) : (
+                                <h3>No Results to Display</h3>
+                            )}
                     </Product>
                     {/* <Product>
                         <ListItem key={product._id}>

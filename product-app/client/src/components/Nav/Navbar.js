@@ -50,9 +50,9 @@ class Navbar extends React.Component {
                 </NavLink>
                 {/* <input className="form-control form-control-dark w-25" type="text" placeholder="Search Products" aria-label="Search" /> */}
                 {/* <a href="/" className="nav nav-link" data-hover="Match&rarr;&amp;&larr;Mix" data-active="Active!"><span>Mix&larr;&amp;&rarr;Match</span></a> */}
-                <NavLink to="/profile" className="nav nav-link">
+                <a href="#" className="nav nav-link">
                     <SignIn />
-                </NavLink>
+                </a>
             </div>
         )
     }

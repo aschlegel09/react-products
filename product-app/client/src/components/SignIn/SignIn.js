@@ -13,6 +13,17 @@ import config from "../../config.json";
 //   }
 // }
 
+const customStyles = {
+  content : {
+    top                   : '110px',
+    left                  : '110px',
+    right                 : 'auto',
+    bottom                : 'auto',
+    margin                : '0 auto',
+    transform             : 'translate(50%, 50%)'
+  }
+};
+
 class SignIn extends Component {
   constructor() {
     super();
@@ -25,6 +36,7 @@ class SignIn extends Component {
     };
 
     this.handleOpenModal = this.handleOpenModal.bind(this);
+    this.afterOpenModal = this.afterOpenModal.bind(this);
     this.handleCloseModal = this.handleCloseModal.bind(this);
   }
 
@@ -42,11 +54,11 @@ class SignIn extends Component {
       mode: 'cors',
       cache: 'default'
     };
-    fetch('http://localhost:3001/api/v1/auth/facebook', options).then(r => {
+    fetch('http://localhost:3001/api/v1/auth/facebook', options).then(r => {//unexpected token > at JSON position 0
       const token = r.headers.get('x-auth-token');
-      r.json().then(user => {
+      r.json().then(user => {//unexpected token > at JSON position 0
         if (token) {
-          this.setState({ isAuthenticated: true, user, token, isLoggedIn: true })
+          this.setState({ isAuthenticated: true, user, token })
           console.log("State changed");
         }
       });
@@ -61,11 +73,11 @@ class SignIn extends Component {
       mode: 'cors',
       cache: 'default'
     };
-    fetch('http://localhost:3001/api/v1/auth/google', options).then(r => {
+    fetch('http://localhost:3001/api/v1/auth/google', options).then(r => {//unexpected token > at JSON position 0
       const token = r.headers.get('x-auth-token');
-      r.json().then(user => {
+      r.json().then(user => {//unexpected token > at JSON position 0
         if (token) {
-          this.setState({ isAuthenticated: true, user, token, isLoggedIn: true })
+          this.setState({ isAuthenticated: true, user, token })
         }
       });
     })
@@ -76,6 +88,11 @@ class SignIn extends Component {
 
   handleOpenModal() {
     this.setState({ showModal: true });
+  }  
+  
+  afterOpenModal() {
+    // references are now sync'd and can be accessed.
+    this.backgroundColor.style.color = '#000';
   }
 
   handleCloseModal() {
@@ -123,6 +140,7 @@ class SignIn extends Component {
         <ReactModal
           ariaHideApp={false}
           isOpen={this.state.showModal}
+          style={customStyles}
           contentLabel="Social Media Login"
         >
           {content}

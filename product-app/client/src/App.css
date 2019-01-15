@@ -3,7 +3,7 @@ body  {
   text-align:center;
 }
 
-button, button {
+button, .button {
   background-color: tan;
   border-radius: 25px;
   padding: 5px 10px;
@@ -38,6 +38,12 @@ button:hover, .button:hover {
   transform: scale(1.1);
   background-color: white;
 }
+
+span{
+  unicode-bidi:bidi-override;
+  direction:rtl;
+}
+
 .footer {
   position: relative;
   width: 100%;
@@ -52,6 +58,8 @@ button:hover, .button:hover {
   left: 0;
   overflow-x: hidden;
 }
+
+
 
 .product-img {
   width: 80%;
