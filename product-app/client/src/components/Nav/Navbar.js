@@ -2,6 +2,7 @@ import React from "react";
 import { NavLink } from 'react-router-dom';
 import SignIn from '../SignIn/SignIn';
 import './Navbar.css';
+import Login from '../SignIn/LoginModal';
 
 class Navbar extends React.Component {
     constructor() {
@@ -48,6 +49,8 @@ class Navbar extends React.Component {
                 <NavLink to="/cart" className="p-2 bd-highlight">
                     Cart
                 </NavLink>
+                <Login />
+                {/* <LoginBox /> */}
                 {/* <input className="form-control form-control-dark w-25" type="text" placeholder="Search Products" aria-label="Search" /> */}
                 {/* <a href="/" className="nav nav-link" data-hover="Match&rarr;&amp;&larr;Mix" data-active="Active!"><span>Mix&larr;&amp;&rarr;Match</span></a> */}
                 {/* <a href="#" className="nav nav-link"> */}

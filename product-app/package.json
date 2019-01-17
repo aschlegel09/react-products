@@ -46,6 +46,7 @@
     "react": "^16.7.0",
     "react-chat-widget": "^2.1.4-1",
     "react-dom": "^16.7.0",
+    "react-facebook-auth": "^1.4.0",
     "react-facebook-login": "^4.1.1",
     "react-google-login": "^4.0.1",
     "react-modal": "^3.8.1",
