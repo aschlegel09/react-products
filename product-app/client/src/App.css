@@ -103,10 +103,7 @@ animation-timing-function: linear; /* or: ease, ease-in, ease-in-out, linear, cu
 
 /* Landscape phone to portrait tablet */
 @media (max-width: 767px) {
-  button:hover, .button:hover {
-    background-color: lightblue;
-    box-shadow: 4px 4px #333;
-  }
+  
 }
 
 /* Landscape phones and down */

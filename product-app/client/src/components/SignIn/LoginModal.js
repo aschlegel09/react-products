@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { GoogleLogin } from 'react-google-login';
-import FacebookLogin from 'react-facebook-login';
+// import { GoogleLogin } from 'react-google-login';
+// import FacebookLogin from 'react-facebook-login';
 import ReactModal from 'react-modal';
-import keys from "../../keys.js";
+// import keys from "../../keys.js";
 import Reveal from 'react-reveal/Reveal';
+import { Input, FormBtn } from '../Form/index';
 
 const customStyles = {
     content: {
@@ -24,16 +25,14 @@ class LoginModal extends Component {
             loggedIn: false,
             isRegisterOpen: false,
             isLoginOpen: false,
-            user: "",
+            username: "",
             password: "",
-            email: ""
-
+            email: "",
         }
 
         this.handleOpenModal = this.handleOpenModal.bind(this);
         this.afterOpenModal = this.afterOpenModal.bind(this);
         this.handleCloseModal = this.handleCloseModal.bind(this);
-        this.userLoggedIn = this.userLoggedIn.bind(this);
     };
 
     showLoginBox() {
@@ -46,7 +45,6 @@ class LoginModal extends Component {
 
     userLoggedIn() {
         this.setState({ loggedIn: true });
-        //   console.log(loggedIn);
     }
 
     handleOpenModal() {
@@ -67,7 +65,7 @@ class LoginModal extends Component {
         return (
 
             <div>
-                <button onClick={this.handleOpenModal}>Log In Normally</button>
+                <FormBtn onClick={this.handleOpenModal}>Log In Normally</FormBtn>
                 <Reveal effect="fadeInUp">
                     <ReactModal
                         ariaHideApp={false}
@@ -77,24 +75,28 @@ class LoginModal extends Component {
                     >
                         <div>
                             <div>
-                                <div onClick={this.showLoginBox.bind(this)}
-                                className={"" + (this.state.isLoginOpen ? "selected" : "muted")} 
+
+                                <FormBtn onClick={this.showLoginBox.bind(this)}
+                                    className={"" + (this.state.isLoginOpen ? "selected" : "muted")}
                                 >
                                     Login
-                                </div>
+                                </FormBtn>
 
-                                <div onClick={this.showRegisterBox.bind(this)}
-                                className={"" + (this.state.isRegisterOpen ? "selected" : "muted")} 
+                                <FormBtn onClick={this.showRegisterBox.bind(this)}
+                                    className={"" + (this.state.isRegisterOpen ? "selected" : "muted")}
                                 >
                                     Register
-                               </div>
+                               </FormBtn>
+
                             </div>
+
                         </div>
-
-                        {this.state.isLoginOpen && <LoginBox />}
-                        {this.state.isRegisterOpen && <RegisterBox />}
-
-                        <button onClick={this.handleCloseModal}>Close Window</button>
+                        <hr />
+                        <p>{JSON.stringify(this.state.fields, null, 2)}</p>
+                        {this.state.isLoginOpen && <LoginBox onSubmit={fields => this.onSubmit(fields)} />}
+                        {this.state.isRegisterOpen && <RegisterBox onSubmit={fields => this.onSubmit(fields)} />}
+                        <hr />
+                        <FormBtn onClick={this.handleCloseModal}>Close Window</FormBtn>
                     </ReactModal>
                 </Reveal>
             </div>
@@ -113,9 +115,27 @@ class LoginBox extends React.Component {
             errors: [],
             username: "",
             password: "",
-            passwordState: ""
+            passwordState: "",
+            showModal: true
         };
+
+        this.handleOpenModal = this.handleOpenModal.bind(this);
     }
+
+    change = e => {
+        this.setState({
+            [e.target.username]: e.target.value
+        });
+    }
+
+
+    handleOpenModal() {
+        this.setState({ showModal: true, isLoginOpen: true });
+    }
+    handleCloseModal() {
+        this.setState({ showModal: false });
+    }
+
 
     showLoginBox() {
         this.setState({ isRegisterOpen: false, isLoginOpen: true });
@@ -142,12 +162,12 @@ class LoginBox extends React.Component {
     }
 
     // whenever a user types a new character
-    onUsernameChange(e) {
+    onUsernameChange = (e) => {
         this.setState({ username: e.target.value });
         this.clearValidationError("username");
     }
 
-    onPasswordChange(e) {
+    onPasswordChange = (e) => {
         this.setState({ password: e.target.value });
         this.clearValidationError("password");
 
@@ -158,7 +178,19 @@ class LoginBox extends React.Component {
         }
     }
 
-    submitLogin(e) {
+    submitLogin = (e) => {
+        e.preventDefault();
+        console.log(this.state.username);
+        console.log(this.state.password);
+
+        // this.props.submitLogin(this.state);
+        this.setState({
+            username: "",
+            password: "",
+            showLoginBox: "false",
+            showModal: "false",
+            showRegisterBox: "false"
+        })
 
         if (this.state.username === "") {
             this.showValidationError("username", "Username not entered");
@@ -197,13 +229,13 @@ class LoginBox extends React.Component {
 
                         <div>
                             <label htmlFor="username">Username</label>
-                            <input text="text" name="username" placeholder="username" onChange={this.onUsernameChange.bind(this)}></input>
+                            <Input text="text" name="username" placeholder="username" value={this.state.username} onChange={this.onUsernameChange}></Input>
                             <small className="danger">{usernameError ? usernameError : ""}</small>
                         </div>
 
                         <div>
                             <label htmlFor="password">Password</label>
-                            <input text="text" name="password" placeholder="password" onChange={this.onPasswordChange.bind(this)}></input>
+                            <Input text="text" name="password" placeholder="password" value={this.state.password} onChange={this.onPasswordChange}></Input>
                             <small className="danger">{passwordError ? passwordError : ""}</small>
 
                             <div className="password-state">
@@ -213,7 +245,7 @@ class LoginBox extends React.Component {
 
                         </div>
 
-                        <button onClick={this.submitLogin.bind(this)}>Login</button>
+                        <FormBtn onClick={this.submitLogin}>Login</FormBtn>
                     </div>
                 </div>
             </div>
@@ -234,6 +266,12 @@ class RegisterBox extends React.Component {
             password: "",
             passwordState: ""
         };
+    }
+
+    change = e => {
+        this.setState({
+            [e.target.username]: e.target.value
+        });
     }
 
     showLoginBox() {
@@ -261,28 +299,42 @@ class RegisterBox extends React.Component {
     }
 
     // whenever a user types a new character
-    onUsernameChange(e) {
+    onUsernameChange = (e) => {
         this.setState({ username: e.target.value });
         this.clearValidationError("username");
     }
 
-    onEmailChange(e) {
+    onEmailChange = (e) => {
         this.setState({ email: e.target.value });
         this.clearValidationError("email");
     }
 
-    onPasswordChange(e) {
+    onPasswordChange = (e) => {
         this.setState({ password: e.target.value });
         this.clearValidationError("password");
 
         if (e.target.value.length > 8) {
             this.setState({ passwordState: "password-strong" });
         } else {
+            // this.showValidationError("password not strong enough");
             this.setState({ passwordState: "password-weak" });
         }
     }
 
-    submitRegister(e) {
+    submitRegister = (e) => {
+        e.preventDefault();
+        console.log(this.state.username);
+        console.log(this.state.email);
+        console.log(this.state.password);
+
+        this.setState({
+            username: "",
+            email: "",
+            password: "",
+            isLoginOpen: "false",
+            isRegisterOpen: "false",
+            showModal: "false"
+        })
 
         if (this.state.username === "") {
             this.showValidationError("username", "Username not entered");
@@ -327,19 +379,19 @@ class RegisterBox extends React.Component {
                         <div>
 
                             <label htmlFor="username">Username</label>
-                            <input text="text" name="username" placeholder="username" onChange={this.onUsernameChange.bind(this)}></input>
+                            <Input text="text" name="username" placeholder="username" value={this.state.username} onChange={this.onUsernameChange}></Input>
                             <small className="danger">{usernameError ? usernameError : ""}</small>
                         </div>
 
                         <div>
                             <label htmlFor="email">Email</label>
-                            <input text="text" name="email" placeholder="email" onChange={this.onEmailChange.bind(this)}></input>
+                            <Input text="text" name="email" placeholder="email" value={this.state.email} onChange={this.onEmailChange}></Input>
                             <small className="danger">{emailError ? emailError : ""}</small>
                         </div>
 
                         <div>
                             <label htmlFor="password">Password</label>
-                            <input text="text" name="password" placeholder="password" onChange={this.onPasswordChange.bind(this)}></input>
+                            <Input text="text" name="password" placeholder="password" value={this.state.password} onChange={this.onPasswordChange}></Input>
                             <small className="danger">{passwordError ? passwordError : ""}</small>
 
                             <div className="password-state">
@@ -349,7 +401,7 @@ class RegisterBox extends React.Component {
 
                         </div>
 
-                        <button onClick={this.submitRegister.bind(this)}>Register</button>
+                        <FormBtn onClick={this.submitRegister}>Register</FormBtn>
                     </div>
                 </div>
             </div>

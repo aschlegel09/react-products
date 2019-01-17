@@ -1,7 +1,8 @@
 import React from "react";
 import { Row, Container } from "../Grid/index";
 import Jumbotron from "../Jumbotron";
-
+import Reveal from 'react-reveal/Reveal';
+                // <Reveal effect="fadeInUp"></Reveal>
 function Blog() {
     return (
         <Container>

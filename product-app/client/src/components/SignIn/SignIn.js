@@ -4,6 +4,7 @@ import FacebookLogin from 'react-facebook-login';
 import ReactModal from 'react-modal';
 import keys from "../../keys.js";
 import Reveal from 'react-reveal/Reveal';
+import { FormBtn } from '../Form/index';
 
 const customStyles = {
   content: {
@@ -104,7 +105,7 @@ class SignIn extends Component {
           {this.state.user.email}
         </div>
         <div>
-          <button onClick={this.logout} className="button">Log Out</button>
+          <FormBtn onClick={this.logout} className="button">Log Out</FormBtn>
         </div>
       </div>
     ) : (
@@ -130,7 +131,7 @@ class SignIn extends Component {
 
       <div>
 
-        <button onClick={this.handleOpenModal}>Log In with Social Media</button>
+        <FormBtn onClick={this.handleOpenModal}>Log In with Social Media</FormBtn>
         <Reveal effect="fadeInUp">
           <ReactModal
             ariaHideApp={false}
@@ -139,8 +140,8 @@ class SignIn extends Component {
             contentLabel="Social Media Login"
           >
             {content}
-            <button onClick={this.logout} className="button">Log Out</button>
-            <button onClick={this.handleCloseModal}>Close Window</button>
+            <FormBtn onClick={this.logout} className="button">Log Out</FormBtn>
+            <FormBtn onClick={this.handleCloseModal}>Close Window</FormBtn>
           </ReactModal>
         </Reveal>
       </div>
