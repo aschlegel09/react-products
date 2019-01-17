@@ -17,16 +17,17 @@ function HomeComponent() {
                 <img src={anchorimage} className="homepage-bg" alt="" />
                 
                 <Fade top>
-                    <span style={{ zIndex: 500, marginTop: 300, marginRight: 300, marginLeft: -300, position: "absolute" }}><h1 className="anchor-font">ANCHOR
-                    <i className="fas fa-anchor mx-auto mt-3"></i>RELIEF</h1>
+                    <span
+                    style={{ zIndex: 500, marginTop: 300, marginRight: 300, marginLeft: -300, position: "absolute" }}><h1 className="homespan anchor-font">ANCHOR
+                    <i className="homespan fas fa-anchor mx-auto mt-3"></i>RELIEF</h1>
                         <p>Anchor is a collaborative design project to raise money for disaster relief efforts around the world. All proceeds from print purchases and gallery donations go to </p>
 
                         <Row>
                             <Col size="md-6">
-                                <a href="https://chrislongfoundation.org/" target="_blank" rel="noopener noreferrer"><img className="chris-long" alt="" /></a>
+                                <a href="https://chrislongfoundation.org/" target="_blank" rel="noopener noreferrer"><img className="homespan chris-long" alt="" /></a>
                             </Col>
                             <Col size="md-6">
-                                <a href="https://www.humanityroad.org/" target="_blank" rel="noopener noreferrer"><img className="humanity-road" alt="" /></a>
+                                <a href="https://www.humanityroad.org/" target="_blank" rel="noopener noreferrer"><img className="homespan humanity-road" alt="" /></a>
                             </Col>
                            
                         </Row>

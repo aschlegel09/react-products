@@ -2,6 +2,7 @@
   font-family: 'Raleway', sans-serif;
   font-weight: 900;
 }
+
 p, h2, h3, h4, h5, a, button, label, select, input, .btn, div {
   font-family: 'Raleway', sans-serif;
   font-weight: 700;
@@ -47,11 +48,6 @@ button:hover, .button:hover {
   transform: scale(1.1);
   background-color: white;
 }
-/* 
-span{
-  unicode-bidi:bidi-override;
-  direction:rtl;
-} */
 
 .footer {
   position: relative;
@@ -67,8 +63,6 @@ span{
   left: 0;
   overflow-x: hidden;
 }
-
-
 
 .product-img {
   width: 80%;
@@ -93,3 +87,31 @@ animation-timing-function: linear; /* or: ease, ease-in, ease-in-out, linear, cu
   }
 
 }
+
+
+/* Media queries */
+/* -------------------------------------- */
+/* Large desktop */
+@media (min-width: 1200px) {
+
+}
+
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px) {
+
+}
+
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) {
+  button:hover, .button:hover {
+    background-color: lightblue;
+    box-shadow: 4px 4px #333;
+  }
+}
+
+/* Landscape phones and down */
+@media (max-width: 480px) {
+
+}
+
+/* -------------------------------------- */

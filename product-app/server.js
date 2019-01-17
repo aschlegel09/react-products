@@ -16,6 +16,8 @@ dotenv.config();
 // const apiIndex = require('./routes/api/index');//
 const app = express();//
 const keys = require('./client/src/keys');
+const passport = require('passport');
+const cookieSession = require('cookie-session');
 
 // const corsOption = {//
 //   origin: true,
@@ -24,6 +26,18 @@ const keys = require('./client/src/keys');
 //   exposedHeaders: ['x-auth-token']
 // };
 // app.use(cors(corsOption));//
+
+// oauth start
+// set up cookie session for one day and encryption
+app.use(cookieSession({
+  maxAge: 24 * 60 * 60 * 1000,
+  keys: [keys.session.cookieKey]
+}));
+
+// initialize passport
+app.use(passport.initialize());
+app.use(passport.session());
+
 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
