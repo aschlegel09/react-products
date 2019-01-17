@@ -4,23 +4,39 @@ import './Home.css';
 import { Col, Row } from "../Grid/index";
 import cloudyimage from "../../images/cloudy.png";
 import anchorimage from "../../images/anchor.png";
+import Fade from 'react-reveal/Fade';
+import Donate from '../Button/Button.js';
 
 function HomeComponent() {
     return (
         <Row>
-            <Col size="md-12 sm-12">
-                <div className="jumbotron jumbo fullscreen-bg">
+           
+            <div className="jumbo fullscreen-bg">
 
                 <img src={cloudyimage} className="cloudy" alt="" />
-                <img src={anchorimage} className="homepage-bg" alt=""/>
-                  
-                    <span style={{ zIndex: 500, marginTop: 300, marginRight: 300, marginLeft: -180, position: "absolute" }}><h1>ANCHOR
+                <img src={anchorimage} className="homepage-bg" alt="" />
+                
+                <Fade top>
+                    <span style={{ zIndex: 500, marginTop: 300, marginRight: 300, marginLeft: -300, position: "absolute" }}><h1 className="anchor-font">ANCHOR
                     <i className="fas fa-anchor mx-auto mt-3"></i>RELIEF</h1>
-                    <p>All proceeds benefit local charities</p>
-                    <a href="https://chrislongfoundation.org/" target="_blank" rel="noopener noreferrer"><img className="chris-long" alt="" /></a>
+                        <p>Anchor is a collaborative design project to raise money for disaster relief efforts around the world. All proceeds from print purchases and gallery donations go to </p>
+
+                        <Row>
+                            <Col size="md-6">
+                                <a href="https://chrislongfoundation.org/" target="_blank" rel="noopener noreferrer"><img className="chris-long" alt="" /></a>
+                            </Col>
+                            <Col size="md-6">
+                                <a href="https://www.humanityroad.org/" target="_blank" rel="noopener noreferrer"><img className="humanity-road" alt="" /></a>
+                            </Col>
+                           
+                        </Row>
+                        
                     </span>
-                </div>
-            </Col>
+                 
+                </Fade>
+                
+            </div>
+            <Donate />
         </Row>
     );
 }

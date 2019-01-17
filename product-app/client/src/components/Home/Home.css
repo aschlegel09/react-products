@@ -3,15 +3,53 @@
     width: 1800px;
   background-size: contain;
   -webkit-animation: backgroundScroll 5s linear 1;
-  -webkit-animation-fill-mode: backwards;
+  -webkit-animation-fill-mode: forwards;
   animation: backgroundScroll 15s reverse infinite;
-  animation-fill-mode: backwards;
+  animation-fill-mode: forwards;
+  animation-timing-function: linear; /* or: ease, ease-in, ease-in-out, linear, cubic-bezier(x1, y1, x2, y2) */
   margin-top: -400px;
   margin-left: -1000px;
   position: absolute;
   z-index: 100; 
   transform: scale(.4);
 }
+
+.humanity-road {
+    background-image: url("../../images/humanityroadsm.png");
+    background-repeat: no-repeat;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 141px;
+    height: 85px;
+    transform: scale(.7);
+    transition: all .6s ease-in-out;
+    border: 2px solid white;
+  }
+  
+  .chris-long {
+    background-image: url("../../images/chrislongfoundation.png");
+    background-repeat: no-repeat;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 240px;
+    height: 85px;
+    transform: scale(.7);
+    transition: all .6s ease-in-out;
+    border: 2px solid white;
+  }
+  
+  .chris-long:hover, .humanity-road:hover {
+    position:relative;
+    display:block;
+    transition: all 1.0s ease-in-out;
+    transform: scale(1.1);
+    background-color: white;
+  }
+  
 
 .cloudy {
     background-image: url("../../images/cloudy.png");

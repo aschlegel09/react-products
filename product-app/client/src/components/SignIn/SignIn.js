@@ -3,7 +3,8 @@ import { GoogleLogin } from 'react-google-login';
 import FacebookLogin from 'react-facebook-login';
 import ReactModal from 'react-modal';
 import config from "../../config.json";
-
+import Reveal from 'react-reveal/Reveal';
+               
 // import queryString from "query-string";
 // componentWillMount() {
 //   var query = queryString.parse(this.props.location.search);
@@ -137,6 +138,7 @@ class SignIn extends Component {
       <div>
       
         <button onClick={this.handleOpenModal}>Log In</button>
+        <Reveal effect="fadeInUp">
         <ReactModal
           ariaHideApp={false}
           isOpen={this.state.showModal}
@@ -147,6 +149,7 @@ class SignIn extends Component {
           <button onClick={this.logout} className="button">Log Out</button>
           <button onClick={this.handleCloseModal}>Close Window</button>
         </ReactModal>
+        </Reveal>
       </div>
     )
   }

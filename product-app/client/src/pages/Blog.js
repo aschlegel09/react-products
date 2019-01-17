@@ -19,12 +19,13 @@ class Blog extends Component {
         <Row>
           <BlogComponent /><BlogComponent />
         </Row>
+        <Jumbotron>
         <Row>
           <Col size="md-2">
             <Link to="/">← Back to Home</Link>
           </Col>
         </Row>
-
+        </Jumbotron>
       </Container>
       </div>
     );

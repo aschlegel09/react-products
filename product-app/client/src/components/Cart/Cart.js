@@ -1,5 +1,5 @@
 import React, { PureComponent } from "react";
-import { Row, Container } from "../Grid/index";
+import { Row } from "../Grid/index";
 import Jumbotron from "../Jumbotron";
 import 'animate.css/animate.min.css';
 import 'font-awesome/css/font-awesome.min.css';
@@ -13,7 +13,8 @@ import {
     cartReducer,
     setCartCurrency,
 } from 'react-shopping-cart';
-
+import Reveal from 'react-reveal/Reveal';
+                <Reveal effect="fadeInUp"></Reveal>
 const { getDefaultLocalization } = cartLocalization;
 // You may take localization object from wherever you want, that's just an example
 // For more information, see localization section
@@ -110,7 +111,7 @@ class CartComponent extends PureComponent {
               checkoutURL="/checkout"
             />;
         return (
-            <Container>
+            // <Container>
                 <Jumbotron>
                     <Row>
                         <h1 className="mx-auto">Your Cart</h1>
@@ -138,7 +139,7 @@ class CartComponent extends PureComponent {
                     </Provider>
                     </Row>
                 </Jumbotron>
-            </Container>
+            // </Container>
         )
     }
 };

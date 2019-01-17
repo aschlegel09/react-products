@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import { Col, Row, Container } from "../components/Grid";
+// import { Link } from "react-router-dom";
+// import { Col, Row } from "../components/Grid";
 import AboutComponent from '../components/About/About';
 import Jumbotron from "../components/Jumbotron/index";
+import Fade from "react-reveal/Fade";
 
 class About extends Component {
 
@@ -10,19 +11,13 @@ class About extends Component {
         return (
             <div>
                 <Jumbotron>
-                    <h1>ANCHOR<i className="fas fa-anchor"></i>RELIEF</h1>
+                    <Fade top>
+                        <h1>ANCHOR<i className="fas fa-anchor"></i>RELIEF</h1>
+                    </Fade>
                 </Jumbotron>
-                <Container>
-                    <Row>
-                        <AboutComponent />
-                    </Row>
-                    <Row>
-                        <Col size="md-2">
-                            <Link to="/">← Back to Home</Link>
-                        </Col>
-                    </Row>
 
-                </Container>
+                <AboutComponent />
+              
             </div>
         );
     }

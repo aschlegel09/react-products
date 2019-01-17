@@ -24,7 +24,8 @@ class Products extends Component {
   loadProducts = () => {
     API.getProducts()
       .then(res =>
-        this.setState({ products: res.data, name: "", category: "", brand: "", cost: "", size: "", color: "" 
+        this.setState({
+          products: res.data, name: "", category: "", brand: "", cost: "", size: "", color: ""
         })
       )
       .catch(err => console.log(err));
@@ -58,10 +59,11 @@ class Products extends Component {
 
   render() {
     return (
-      <Container fluid>
-        <Row>
-          {/* <Col size="md-6"> */}
-            {/* <Jumbotron>
+      <div>
+        {/* // <Container fluid> */}
+        {/* <Row> */}
+        {/* <Col size="md-6"> */}
+        {/* <Jumbotron>
               <h1>What Products Should I Read?</h1>
             </Jumbotron>
             <form>
@@ -90,11 +92,15 @@ class Products extends Component {
                 Submit Book
               </FormBtn>
             </form> */}
-          {/* </Col> */}
-          <Col size="md-12 sm-12">
-            <Jumbotron>
-              <h1>Product List</h1>
-            </Jumbotron>
+        {/* </Col> */}
+        {/* <Col size="md-12 sm-12"> */}
+        <Jumbotron>
+          <h1>Product List</h1>
+        </Jumbotron>
+        <Container>
+          <Jumbotron>
+            <Row>
+            <Col size="md-12">
             {this.state.products.length ? (
               <List>
                 {this.state.products.map(product => (
@@ -108,13 +114,31 @@ class Products extends Component {
                   </ListItem>
                 ))}
               </List>
-                
+
             ) : (
-              <h3>No Results to Display</h3>
-            )}
+                <h3>No Results to Display</h3>
+              )}
+            </Col>
+          </Row>
+          </Jumbotron>
+          <Jumbotron>
+            <a href="https://www.crowdrise.com/o/en/campaign/anchor-relief" target="_blank" rel="noopener noreferrer" ><button style={{
+              color: "white",
+              backgroundColor: "red",
+              width: "120px",
+              height: "auto",
+              padding: "10px"
+            }}>Donate<i className="fas fa-heart"></i></button></a>
+          </Jumbotron>
+          <Jumbotron>
+        <Row>
+          <Col size="md-2">
+            <Link to="/">← Back to Home</Link>
           </Col>
         </Row>
-      </Container>
+        </Jumbotron>
+        </Container>
+      </div>
     );
   }
 }

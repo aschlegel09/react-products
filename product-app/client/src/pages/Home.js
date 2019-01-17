@@ -2,10 +2,11 @@ import React, { Component } from "react";
 import { Row, Container } from "../components/Grid";
 import HomeComponent from "../components/Home/Home";
 import BlogComponent from "../components/Blog/Blog";
+import Reveal from 'react-reveal/Reveal';
 // import API from "../utils/API";
 // import { List, ListItem } from "../components/List/index";
 // import { Link } from "react-router-dom";
-// import Product from '../components/Product/Product';
+import Product from '../components/Product/Product';
 
 class Home extends Component {
     // state = {
@@ -29,11 +30,17 @@ class Home extends Component {
     //         )
     //         .catch(err => console.log(err));
     // };
+      
+    componentDidMount() {
+        window.scrollTo(0, 0)
+      }
 
     render() {
+        
         return (
             <Container fluid className="homepage-bg">
                 <HomeComponent />
+      
                 <Row>
                     {/* <Product>
                         {this.state.products.length ? (
@@ -60,11 +67,17 @@ class Home extends Component {
                             </Link>
                         </ListItem>
                     </Product> */}
+                </Row>                
+                <Reveal effect="fadeInUp">
+                <Row>
+                    <Product /><Product />
                 </Row>
+                </Reveal>
+                <Reveal effect="fadeInUp">
                 <Row>
                     <BlogComponent /><BlogComponent />
                 </Row>
-
+                </Reveal>
             </Container>
         );
     }

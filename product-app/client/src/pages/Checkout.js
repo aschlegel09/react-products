@@ -1,20 +1,22 @@
 import React from "react";
-import { Col, Row, Container } from "../components/Grid";
+// import { Col, Row, Container } from "../components/Grid";
 import CheckoutComponent from "../components/Checkout/Checkout";
 import Jumbotron from "../components/Jumbotron/index";
 
 function Checkout() {
     return (
-        <Container fluid>
+        <div>
+        {/* <Container fluid> */}
             <Jumbotron>
-                <Row>
-                    <Col size="md-12">
+                {/* <Row> */}
+                    {/* <Col size="md-12"> */}
                         <CheckoutComponent />
-                    </Col>
+                    {/* </Col> */}
 
-                </Row>
+                {/* </Row> */}
             </Jumbotron>
-        </Container>
+        {/* </Container> */}
+        </div>
     );
 }
 

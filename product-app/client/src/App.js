@@ -13,6 +13,7 @@ import About from "./pages/About";
 import Checkout from "./pages/Checkout";
 import User from "./pages/User";
 import Profile from "./pages/Profile";
+import ScrollToTop from "./components/Scroll/Scroll";
 
 // const passport = require('passport');
 // const session = require('express-session');
@@ -28,11 +29,13 @@ import Profile from "./pages/Profile";
 // app.use(passport.initialize());
 // app.use(passport.session());
 
+
 class App extends Component {
 
   render() {
     return (
       <Router>
+      <ScrollToTop>
         <div>
           <Navbar />
           <Switch>
@@ -82,6 +85,7 @@ class App extends Component {
             </div>
           {/* </Container> */}
         </div>
+        </ScrollToTop>
       </Router>
     );
   }

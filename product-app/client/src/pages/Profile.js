@@ -28,45 +28,49 @@ class Profile extends Component {
 
   render() {
     return (
-      <Container fluid>
-        <Row>
-        <Col size="md-12 sm-12">
-            <Jumbotron>
-              <h1>User List</h1>
-            </Jumbotron>
-            {this.state.users.length ? (
-              <List>
-                {this.state.users.map(user => (
-                  <ListItem key={user._id}>
-                    <Link to={"/profile/" + user._id}>
-                      <strong>
-                        User: {user.name}<br />
-                        Email: {user.email}
-                      </strong>
-                    </Link>
-                    {/* <DeleteBtn onClick={() => this.deleteuser(user._id)} /> */}
-                  </ListItem>
-                ))}
-                  <Row>
-                {/* <Product /><Product />
+      <div>
+        {/* // <Container fluid> */}
+        {/* //   <Row> */}
+        {/* //   <Col size="md-12 sm-12"> */}
+        <Jumbotron>
+          <h1>User List</h1>
+        </Jumbotron>
+        <Container>
+          <Jumbotron>
+            <Row>
+              <Col size="md-12">
+                {this.state.users.length ? (
+                  <List>
+                    {this.state.users.map(user => (
+                      <ListItem key={user._id}>
+                        <Link to={"/profile/" + user._id}>
+                          <strong>
+                            User: {user.name}<br />
+                            Email: {user.email}
+                          </strong>
+                        </Link>
+                        {/* <DeleteBtn onClick={() => this.deleteuser(user._id)} /> */}
+                      </ListItem>
+                    ))}
+                    <Row>
+                      {/* <Product /><Product />
                 </Row>
                 <Row>
                 <Product /><Product />
                 </Row>
                 <Row>
                 <Product /><Product /> */}
-                </Row>
-              </List>
-                
-            ) : (
-              <h3>No Results to Display</h3>
-            )}
-              {/* <User /> */}
-
-          </Col>
-          
-        </Row>
-      </Container>
+                    </Row>
+                  </List>
+                ) : (
+                    <h3>No Results to Display</h3>
+                  )}
+                {/* <User /> */}
+              </Col>
+            </Row>
+          </Jumbotron>
+        </Container>
+      </div>
     );
   }
 }

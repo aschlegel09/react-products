@@ -1,3 +1,12 @@
+.anchor-font, h1 {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 900;
+}
+p, h2, h3, h4, h5, a, button, label, select, input, .btn, div {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
+}
+
 body  {
   color:#000;
   text-align:center;
@@ -67,11 +76,20 @@ span{
   border-radius: 25px 25px 0px 0px;
 }
 
+.fa-anchor {
+-webkit-animation: App-logo-spin 5s linear 1;
+-webkit-animation-fill-mode: forwards;
+animation: App-logo-spin 4s alternate infinite;
+animation-fill-mode: forwards;
+animation-timing-function: linear; /* or: ease, ease-in, ease-in-out, linear, cubic-bezier(x1, y1, x2, y2) */
+}
+
 @keyframes App-logo-spin {
   from {
-    transform: rotate(0deg);
+    transform: rotate(-35deg);
   }
   to {
-    transform: rotate(360deg);
+    transform: rotate(35deg);
   }
+
 }
