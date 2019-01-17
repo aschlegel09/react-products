@@ -14,7 +14,7 @@ import {
     setCartCurrency,
 } from 'react-shopping-cart';
 import Reveal from 'react-reveal/Reveal';
-                <Reveal effect="fadeInUp"></Reveal>
+               
 const { getDefaultLocalization } = cartLocalization;
 // You may take localization object from wherever you want, that's just an example
 // For more information, see localization section
@@ -128,13 +128,15 @@ class CartComponent extends PureComponent {
                                 }
 
                             />
-                            <Cart
+                            <Reveal effect="fadeInUp">
+                             <Cart
                                 checkoutButton={checkoutButtonElement}
                                 // getLocalization={
                                 //     getCartLocalization
                                 // }
                                 getLocalization={getDefaultLocalization('cart', 'en', localization)}
                             />
+                            </Reveal>
                         </div>
                     </Provider>
                     </Row>
