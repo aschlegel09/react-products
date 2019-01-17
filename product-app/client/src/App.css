@@ -38,11 +38,11 @@ button:hover, .button:hover {
   transform: scale(1.1);
   background-color: white;
 }
-
+/* 
 span{
   unicode-bidi:bidi-override;
   direction:rtl;
-}
+} */
 
 .footer {
   position: relative;

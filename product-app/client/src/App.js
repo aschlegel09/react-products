@@ -8,10 +8,11 @@ import NoMatch from "./pages/NoMatch";
 import Navbar from "./components/Nav/Navbar";
 import Home from "./pages/Home";
 import Cart from "./pages/Cart";
-import Profile from "./pages/Profile";
 import { Col, Row } from "./components/Grid/index";
 import About from "./pages/About";
 import Checkout from "./pages/Checkout";
+import User from "./pages/User";
+import Profile from "./pages/Profile";
 
 // const passport = require('passport');
 // const session = require('express-session');
@@ -40,6 +41,7 @@ class App extends Component {
             <Route exact path="/products/:id" component={Detail} />
             <Route exact path="/blog" component={Blog} />
             <Route exact path="/profile" component={Profile} />
+            <Route exact path="/profile/:id" component={User} />
             <Route exact path="/cart" component={Cart} />
             <Route exact path="/checkout" component={Checkout} />
             <Route exact path="/about" component={About} />

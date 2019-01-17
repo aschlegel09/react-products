@@ -4,7 +4,7 @@ import API from "../utils/API";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
-import Product from '../components/Product/Product';
+// import Product from '../components/Product/Product';
 
 class Products extends Component {
   state = {
@@ -24,7 +24,8 @@ class Products extends Component {
   loadProducts = () => {
     API.getProducts()
       .then(res =>
-        this.setState({ products: res.data, name: "", category: "", brand: "", cost: "", size: "", color: "" })
+        this.setState({ products: res.data, name: "", category: "", brand: "", cost: "", size: "", color: "" 
+        })
       )
       .catch(err => console.log(err));
   };
@@ -106,15 +107,6 @@ class Products extends Component {
                     {/* <DeleteBtn onClick={() => this.deleteProduct(product._id)} /> */}
                   </ListItem>
                 ))}
-                  <Row>
-                <Product /><Product />
-                </Row>
-                <Row>
-                <Product /><Product />
-                </Row>
-                <Row>
-                <Product /><Product />
-                </Row>
               </List>
                 
             ) : (

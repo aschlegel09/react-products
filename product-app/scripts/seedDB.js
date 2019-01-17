@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Product = require("../models/product");
+const User = require("../models/User");
 
 // This file empties the Products collection and inserts the product below
 const productSeed = [
@@ -50,11 +51,36 @@ const productSeed = [
   }
 ];
 
+const userSeed = [
+  {
+    name: "Andy",
+    email: "aschlegel09@gmail.com",
+    loggedIn: true,
+    date: new Date(Date.now())
+  }
+];
+
 mongoose.connect(
   process.env.MONGOLAB_URI ||
-  "mongodb://localhost/productlist", { useNewUrlParser: true }
+  "mongodb://localhost/reactprod", { useNewUrlParser: true }
 ),
   console.log("Adding Seeds");
+
+userSeed.map(data => {
+  const user = new User(data);
+  user.save();
+  user
+  .remove({})
+  .then(() => user.collection.insertMany(userSeed))
+  .then(data => {
+    console.log(data.result.n + " record inserted");
+    process.exit(0);
+  })
+  .catch(err => {
+    console.log(err);
+    process.exit(1);
+  });
+});
 
 productSeed.map(data => {
   const product = new Product(data);

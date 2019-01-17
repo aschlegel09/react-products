@@ -6,10 +6,9 @@ import API from "../utils/API";
 
 class Detail extends Component {
   state = {
-    product: {}
+    product: []
   };
   // When this component mounts, grab the product with the _id of this.props.match.params.id
-  // e.g. localhost:3000/products/###############
   componentDidMount() {
     API.getProduct(this.props.match.params.id)
       .then(res => this.setState({ product: res.data }))
@@ -40,7 +39,7 @@ class Detail extends Component {
         </Row>
         <Row>
           <Col size="md-2">
-            <Link to="/">← Back to Products</Link>
+            <Link to="/products">← Back to Products</Link>
           </Col>
         </Row>
       </Container>

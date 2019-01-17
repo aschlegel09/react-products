@@ -40,51 +40,51 @@ class SignIn extends Component {
     this.handleCloseModal = this.handleCloseModal.bind(this);
   }
 
-  logout = (obj) => {
-    this.setState({ isAuthenticated: false, token: '', user: null, isLoggedIn: false, showModal: false })
-    console.log(obj + "\nlogged out");
-  };
+  // logout = (obj) => {
+  //   this.setState({ isAuthenticated: false, token: '', user: null, isLoggedIn: false, showModal: false })
+  //   console.log(obj + "\nlogged out");
+  // };
 
-  facebookResponse = (response) => {
-    console.log(response);
-    const tokenBlob = new Blob([JSON.stringify({ access_token: response.accessToken }, null, 2)], { type: 'application/json' });
-    const options = {
-      method: 'POST',
-      body: tokenBlob,
-      mode: 'cors',
-      cache: 'default'
-    };
-    fetch('http://localhost:3001/api/v1/auth/facebook', options).then(r => {//unexpected token > at JSON position 0
-      const token = r.headers.get('x-auth-token');
-      r.json().then(user => {//unexpected token > at JSON position 0
-        if (token) {
-          this.setState({ isAuthenticated: true, user, token })
-          console.log("State changed");
-        }
-      });
-    })
-  };
-  googleResponse = (response) => {
-    console.log(response);
-    const tokenBlob = new Blob([JSON.stringify({ access_token: response.accessToken }, null, 2)], { type: 'application/json' });
-    const options = {
-      method: 'POST',
-      body: tokenBlob,
-      mode: 'cors',
-      cache: 'default'
-    };
-    fetch('http://localhost:3001/api/v1/auth/google', options).then(r => {//unexpected token > at JSON position 0
-      const token = r.headers.get('x-auth-token');
-      r.json().then(user => {//unexpected token > at JSON position 0
-        if (token) {
-          this.setState({ isAuthenticated: true, user, token })
-        }
-      });
-    })
-  };
-  onFailure = (error) => {
-    alert(error);
-  }
+  // facebookResponse = (response) => {
+  //   console.log(response);
+  //   const tokenBlob = new Blob([JSON.stringify({ access_token: response.accessToken }, null, 2)], { type: 'application/json' });
+  //   const options = {
+  //     method: 'POST',
+  //     body: tokenBlob,
+  //     mode: 'cors',
+  //     cache: 'default'
+  //   };
+    // fetch('http://localhost:3001/api/v1/auth/facebook', options).then(r => {//unexpected token > at JSON position 0
+    //   const token = r.headers.get('x-auth-token');
+    //   r.json().then(user => {//unexpected token > at JSON position 0
+    //     if (token) {
+    //       this.setState({ isAuthenticated: true, user, token })
+    //       console.log("State changed");
+    //     }
+    //   });
+    // })
+  // };
+  // googleResponse = (response) => {
+  //   console.log(response);
+  //   const tokenBlob = new Blob([JSON.stringify({ access_token: response.accessToken }, null, 2)], { type: 'application/json' });
+  //   const options = {
+  //     method: 'POST',
+  //     body: tokenBlob,
+  //     mode: 'cors',
+  //     cache: 'default'
+  //   };
+      // fetch('http://localhost:3001/api/v1/auth/google', options).then(r => {//unexpected token > at JSON position 0
+      //   const token = r.headers.get('x-auth-token');
+      //   r.json().then(user => {//unexpected token > at JSON position 0
+      //     if (token) {
+      //       this.setState({ isAuthenticated: true, user, token })
+      //     }
+      //   });
+      // })
+  // };
+  // onFailure = (error) => {
+  //   alert(error);
+  // }
 
   handleOpenModal() {
     this.setState({ showModal: true });
