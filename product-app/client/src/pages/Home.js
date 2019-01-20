@@ -6,7 +6,7 @@ import Reveal from 'react-reveal/Reveal';
 // import API from "../utils/API";
 // import { List, ListItem } from "../components/List/index";
 // import { Link } from "react-router-dom";
-import Product from '../components/Product/Product';
+// import Product from '../components/Product/Product';
 
 class Home extends Component {
     // state = {
@@ -35,12 +35,14 @@ class Home extends Component {
         window.scrollTo(0, 0)
       }
 
+      
+
     render() {
         
         return (
             <Container fluid className="homepage-bg">
                 <HomeComponent />
-      
+
                 <Row>
                     {/* <Product>
                         {this.state.products.length ? (
@@ -70,7 +72,8 @@ class Home extends Component {
                 </Row>                
                 <Reveal effect="fadeInUp">
                 <Row>
-                    <Product /><Product />
+                    {/* <Product />
+                    <Product /> */}
                 </Row>
                 </Reveal>
                 <Reveal effect="fadeInUp">

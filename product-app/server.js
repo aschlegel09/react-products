@@ -1,6 +1,6 @@
 const express = require("express");//
 // const path = require('path');//
-// const cors = require('cors');//
+const cors = require('cors');//
 // const bodyParser = require('body-parser');//
 // const cookieParser = require('cookie-parser');//
 // const logger = require('morgan');//
@@ -38,7 +38,11 @@ app.use(cookieSession({
 app.use(passport.initialize());
 app.use(passport.session());
 
-
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());

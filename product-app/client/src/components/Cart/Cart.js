@@ -3,8 +3,9 @@ import { Row } from "../Grid/index";
 import Jumbotron from "../Jumbotron";
 import 'animate.css/animate.min.css';
 import 'font-awesome/css/font-awesome.min.css';
-import { Provider } from 'react-redux';
-import { createStore, combineReducers } from 'redux';
+import {Provider } from 'react-redux';
+// bindActionCreators
+import { createStore, combineReducers,  } from 'redux';
 import {
     Cart,
     Product,
@@ -14,6 +15,8 @@ import {
     setCartCurrency,
 } from 'react-shopping-cart';
 import Reveal from 'react-reveal/Reveal';
+import UserReducer from './reducers/user-reducer.js';
+// import {selectUser} from './actions/index';
                
 const { getDefaultLocalization } = cartLocalization;
 // You may take localization object from wherever you want, that's just an example
@@ -24,26 +27,23 @@ const iPadCaseLocalization = {
     red: 'Red',
     green: 'Green',
     yellow: 'Yellow',
-    GBP: '£',
-    EUR: '€',
+    // GBP: '£',
+    // EUR: '€',
     USD: '$',
   };
    
-//   const iPadPropertiesWithAdditionalCostLocalization = {
-//     yellow: 'Yellow (+{cost}{localizedCurrency}',
-//   };
-   
+//   cart reducer
   const store = createStore(
     combineReducers(
       {
         cart: cartReducer,
-        // Your own reducers, sir
-      }
+        users: UserReducer,
+    }
     )
   );
    
   const localization = {
-    GBP: '£',
+    // GBP: '£',
     USD: '$',
   };
 
@@ -52,25 +52,38 @@ const iPadCaseLocalization = {
   );
 
 class CartComponent extends PureComponent {
+
+    createListItems() {
+        return this.props.users.map((user) => {
+            return (
+                <li key={user.id}
+                onClick={() => this.props.selectUser(user)}
+                >{user.name}</li>
+            );
+        });
+    }
+
     state = {
         product: {
             name: 'iPadCase',
             id: 'ipad-case',
             path: '/shop/ipad-case/',
             properties: {
-                color: ['red', 'green', {
-                    additionalCost: {
-                        GBP: 1,
-                        EUR: 2,
-                        USD: 3.50,
-                    },
-                    value: 'yellow',
-                }],
+                color: ['red', 'green'
+                // {
+                    // additionalCost: {
+                    //     // GBP: 1,
+                    //     // EUR: 2,
+                    //     USD: 3.50,
+                    // },
+                    // value: 'yellow',
+                // }
+            ],
             },
             propertiesToShowInCart: ['color'],
-            prices: { GBP: 70, EUR: 80, USD: 90 },
-            currency: 'GBP',
-            imageSrc: '1-483x321.jpeg',
+            prices: { USD: 90 },
+            // currency: 'GBP',
+            imageSrc: '1-483x321.jpeg',//////////////////////
         },
         getProductLocalization:
             getDefaultLocalization(
@@ -78,7 +91,6 @@ class CartComponent extends PureComponent {
                 'en',
                 {
                     ...iPadCaseLocalization,
-                    // ...iPadPropertiesWithAdditionalCostLocalization
                 }
             ),
         getCheckoutButtonLocalization:
@@ -112,9 +124,13 @@ class CartComponent extends PureComponent {
             />;
         return (
             // <Container>
+            <div style={{
+                minHeight:"600px"
+            }}>
                 <Jumbotron>
                     <Row>
                         <h1 className="mx-auto">Your Cart</h1>
+                        {/* {this.createListItemS()} */}
                     </Row>
                     <hr></hr>
                     <Row>
@@ -141,9 +157,20 @@ class CartComponent extends PureComponent {
                     </Provider>
                     </Row>
                 </Jumbotron>
-            // </Container>
+            </div>
         )
     }
 };
 
+// function mapStateToProps(state) {
+//     return {
+//         users: state.users
+//     };
+// }
+
+// function matchDispatchToProps(dispatch) {
+//     return bindActionCreators({ selectUser: selectUser }, dispatch)
+// }
+
+// export default connect(mapStateToProps, matchDispatchToProps)(CartComponent);
 export default CartComponent;

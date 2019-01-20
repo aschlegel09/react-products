@@ -1,35 +1,46 @@
 import React, { Component } from "react";
 import Jumbotron from "../components/Jumbotron";
-import API from "../utils/API";
+// import API from "../utils/API";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
-import { List, ListItem } from "../components/List";
-// import Product from '../components/Product/Product';
+// import { ListItem } from "../components/List";
+import {ProductConsumer} from '../context.js';
+// import {productSeed} from "../script/seed";
+import Product from "../components/Product/Product";
 
 class Products extends Component {
-  state = {
-    products: [],
-    name: "",
-    category: "",
-    cost: "",
-    brand: "",
-    size: "",
-    color: ""
-  };
+//   constructor(props) {
+//     super(props);
 
-  componentDidMount() {
-    this.loadProducts();
-  }
+//     console.log(this.state);
+//     console.log(this);
+// }
+  // state = {
+  //   // products: [],
+  //   products: productSeed
+  //   // id: "",
+  //   // name: "",
+  //   // category: "",
+  //   // cost: "",
+  //   // brand: "",
+  //   // size: "",
+  //   // color: "",
+  //   // img: ""
+  // };
 
-  loadProducts = () => {
-    API.getProducts()
-      .then(res =>
-        this.setState({
-          products: res.data, name: "", category: "", brand: "", cost: "", size: "", color: ""
-        })
-      )
-      .catch(err => console.log(err));
-  };
+  // componentDidMount() {
+  //   this.loadProducts();
+  // }
+
+  // loadProducts = () => {
+  //   API.getProducts()
+  //     .then(res =>
+  //       this.setState({
+  //         products: res.data, name: "", category: "", brand: "", cost: "", size: "", color: ""
+  //       })
+  //     )
+  //     .catch(err => console.log(err));
+  // };
 
   // deleteProduct = id => {
   //   API.deleteProduct(id)
@@ -58,47 +69,44 @@ class Products extends Component {
   // };
 
   render() {
+    // console.log(this.state.products);
+
     return (
       <div>
-        {/* // <Container fluid> */}
-        {/* <Row> */}
-        {/* <Col size="md-6"> */}
-        {/* <Jumbotron>
-              <h1>What Products Should I Read?</h1>
-            </Jumbotron>
-            <form>
-              <Input
-                value={this.state.title}
-                onChange={this.handleInputChange}
-                name="title"
-                placeholder="Title (required)"
-              />
-              <Input
-                value={this.state.author}
-                onChange={this.handleInputChange}
-                name="author"
-                placeholder="Author (required)"
-              />
-              <TextArea
-                value={this.state.synopsis}
-                onChange={this.handleInputChange}
-                name="synopsis"
-                placeholder="Synopsis (Optional)"
-              />
-              <FormBtn
-                disabled={!(this.state.author && this.state.title)}
-                onClick={this.handleFormSubmit}
-              >
-                Submit Book
-              </FormBtn>
-            </form> */}
-        {/* </Col> */}
-        {/* <Col size="md-12 sm-12"> */}
+       
         <Jumbotron>
           <h1>Product List</h1>
+          {/* whatever I have in context consumer return here */}
+          <ProductConsumer>
+            {/* this caused error */}
+            {value => {
+              // return <h1>{hello}</h1>;
+              console.log(value.products);
+              // value Here of seed data
+              // since products is an array, we can map
+              return value.products.map((product) => {
+                return <Product key={product.id} product={product} />
+            });
+            }}
+            
+            {/* {value => { */}
+                {/* // return <h1>{value}</h1> */}
+
+              
+          {/* // Product */}
+           
+        
+              {/* /* <ListItem key={product.id}>
+            //   <Link to={"/products/" + product.id}>
+            //     <strong>
+            //       {product.name} by {product.brand}
+            //     </strong>
+            //   </Link>
+            // </ListItem>  */}
+          </ProductConsumer>
         </Jumbotron>
         <Container>
-          <Jumbotron>
+          {/* <Jumbotron>
             <Row>
             <Col size="md-12">
             {this.state.products.length ? (
@@ -111,17 +119,18 @@ class Products extends Component {
                       </strong>
                     </Link>
                     {/* <DeleteBtn onClick={() => this.deleteProduct(product._id)} /> */}
-                  </ListItem>
-                ))}
-              </List>
+                  {/* </ListItem> */}
+                {/* ))} */}
+              {/* </List>
 
             ) : (
                 <h3>No Results to Display</h3>
               )}
             </Col>
           </Row>
-          </Jumbotron>
+          </Jumbotron> */}
           <Jumbotron>
+            <p className="text">By purchasing one of our pieces, you are helping someone in dire need. Anchor Relief partners with leading disaster relief foundations in order to help first-responders deliver needed goods immediately. Every penny counts - simply follow the Donate link below and get on your way knowing you made a difference.</p>
             <a href="https://www.crowdrise.com/o/en/campaign/anchor-relief" target="_blank" rel="noopener noreferrer" ><button style={{
               color: "white",
               backgroundColor: "red",

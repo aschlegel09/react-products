@@ -10,7 +10,7 @@ class Blog extends Component {
     return (
       <div>
       <Jumbotron>
-        <h1>Blog</h1>
+        <h1>News</h1>
       </Jumbotron>
       <Container>
         <Row>

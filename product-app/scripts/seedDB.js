@@ -66,7 +66,7 @@ mongoose.connect(
 ),
   console.log("Adding Seeds");
 
-userSeed.map(data => {
+userSeed.map((data) => {
   const user = new User(data);
   user.save();
   user
@@ -82,19 +82,19 @@ userSeed.map(data => {
   });
 });
 
-productSeed.map(data => {
-  const product = new Product(data);
-  // product.save();
-  product
-    .remove({})
-    .then(() => product.collection.insertMany(productSeed))
-    .then(data => {
-      console.log(data.result.n + " records inserted!");
-      process.exit(0);
-    })
-    .catch(err => {
-      console.error(err);
-      process.exit(1);
-    });
-});
+// productSeed.map(data => {
+//   const product = new Product(data);
+//   // product.save();
+//   product
+//     .remove({})
+//     .then(() => product.collection.insertMany(productSeed))
+//     .then(data => {
+//       console.log(data.result.n + " records inserted!");
+//       process.exit(0);
+//     })
+//     .catch(err => {
+//       console.error(err);
+//       process.exit(1);
+//     });
+// });
 

@@ -1,7 +1,8 @@
 import React from "react";
 import { Col, Row, Container } from "../components/Grid";
 import Jumbotron from "../components/Jumbotron";
-import SignIn from "../components/SignIn/SignIn";
+// import SignIn from "../components/SignIn/SignIn";
+import {Link} from 'react-router-dom';
 
 function NoMatch() {
   return (
@@ -16,7 +17,13 @@ function NoMatch() {
               </span>
             </h1>
           </Jumbotron>
-          <SignIn />
+          <Jumbotron>
+          <Row>
+          <Col size="md-2">
+            <Link to="/">← Back to Home</Link>
+          </Col>
+        </Row>
+          </Jumbotron>
         </Col>
       </Row>
     </Container>

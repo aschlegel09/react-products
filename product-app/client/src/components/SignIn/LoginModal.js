@@ -4,17 +4,28 @@ import React, { Component } from 'react';
 import ReactModal from 'react-modal';
 // import keys from "../../keys.js";
 import Reveal from 'react-reveal/Reveal';
-import { Input, FormBtn } from '../Form/index';
+import { Input, FormBtnNav, FormBtn } from '../Form/index';
+import { Container } from '../Grid';
+// import User from '../../../../models/User';
+import axios from 'axios';
 
 const customStyles = {
-    content: {
+
         top: '110px',
+        maxWidth: '800px',
+        width: '600px',
+        overlay: {zIndex: 10000},
+        minWidth: '400px',
         left: '110px',
         right: 'auto',
         bottom: 'auto',
         margin: '0 auto',
-        transform: 'translate(50%, 50%)'
-    }
+        marginLeft: '-90px',
+        marginTop: '-210px',
+        transform: 'translate(50%, 50%)',
+        minHeight: '500px',
+        height: '600px'
+    
 };
 
 class LoginModal extends Component {
@@ -65,7 +76,9 @@ class LoginModal extends Component {
         return (
 
             <div>
-                <FormBtn onClick={this.handleOpenModal}>Log In Normally</FormBtn>
+                <Container fluid>
+                <FormBtnNav onClick={this.handleOpenModal}
+                >Log In</FormBtnNav>
                 <Reveal effect="fadeInUp">
                     <ReactModal
                         ariaHideApp={false}
@@ -76,17 +89,17 @@ class LoginModal extends Component {
                         <div>
                             <div>
 
-                                <FormBtn onClick={this.showLoginBox.bind(this)}
-                                    className={"" + (this.state.isLoginOpen ? "selected" : "muted")}
+                                <button onClick={this.showLoginBox.bind(this)}
+                                    className={"" + (this.state.isLoginOpen ? "btn-success" : "btn-primary")}
                                 >
                                     Login
-                                </FormBtn>
+                                </button>
 
-                                <FormBtn onClick={this.showRegisterBox.bind(this)}
-                                    className={"" + (this.state.isRegisterOpen ? "selected" : "muted")}
+                                <button onClick={this.showRegisterBox.bind(this)}
+                                    className={"" + (this.state.isRegisterOpen ? "btn-success" : "btn-primary")}
                                 >
                                     Register
-                               </FormBtn>
+                               </button>
 
                             </div>
 
@@ -96,9 +109,12 @@ class LoginModal extends Component {
                         {this.state.isLoginOpen && <LoginBox onSubmit={fields => this.onSubmit(fields)} />}
                         {this.state.isRegisterOpen && <RegisterBox onSubmit={fields => this.onSubmit(fields)} />}
                         <hr />
+                        
                         <FormBtn onClick={this.handleCloseModal}>Close Window</FormBtn>
                     </ReactModal>
                 </Reveal>
+                
+                </Container>
             </div>
         )
     }
@@ -182,7 +198,16 @@ class LoginBox extends React.Component {
         e.preventDefault();
         console.log(this.state.username);
         console.log(this.state.password);
-
+        
+        const obj = {
+            person_name: this.state.person_name,
+            business_name: this.state.business_name,
+            business_gst_number: this.state.business_gst_number,
+            contentType: "application/json"
+          };
+          axios.post('http://localhost:3001/login/add', obj) 
+              .then(res => console.log(res.data));
+          
         // this.props.submitLogin(this.state);
         this.setState({
             username: "",
@@ -198,6 +223,7 @@ class LoginBox extends React.Component {
         } if (this.state.password === "") {
             this.showValidationError("password", "Password not entered");
         }
+
     }
 
     render() {
@@ -226,8 +252,9 @@ class LoginBox extends React.Component {
             <div>
                 <div>
                     <div>
-
                         <div>
+                            <h5>Welcome Back! Login below:
+                            </h5>
                             <label htmlFor="username">Username</label>
                             <Input text="text" name="username" placeholder="username" value={this.state.username} onChange={this.onUsernameChange}></Input>
                             <small className="danger">{usernameError ? usernameError : ""}</small>
@@ -378,6 +405,8 @@ class RegisterBox extends React.Component {
                     <div>
                         <div>
 
+                    <h5>If this is your first visit, Register below:
+                    </h5>
                             <label htmlFor="username">Username</label>
                             <Input text="text" name="username" placeholder="username" value={this.state.username} onChange={this.onUsernameChange}></Input>
                             <small className="danger">{usernameError ? usernameError : ""}</small>

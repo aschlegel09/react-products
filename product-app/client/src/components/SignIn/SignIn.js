@@ -4,7 +4,7 @@ import FacebookLogin from 'react-facebook-login';
 import ReactModal from 'react-modal';
 import keys from "../../keys.js";
 import Reveal from 'react-reveal/Reveal';
-import { FormBtn } from '../Form/index';
+import { FormBtn, FormBtnNav } from '../Form/index';
 
 const customStyles = {
   content: {
@@ -131,7 +131,9 @@ class SignIn extends Component {
 
       <div>
 
-        <FormBtn onClick={this.handleOpenModal}>Log In with Social Media</FormBtn>
+        <FormBtnNav onClick={this.handleOpenModal}
+        className="login-btn"
+        >Log In with Social Media</FormBtnNav>
         <Reveal effect="fadeInUp">
           <ReactModal
             ariaHideApp={false}

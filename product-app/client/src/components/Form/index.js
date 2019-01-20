@@ -20,7 +20,14 @@ export function TextArea(props) {
 
 export function FormBtn(props) {
   return (
-    <button {...props} style={{ padding: 15 }} className="btn btn-primary ">
+    <button {...props} style={{ padding: "8px 18px" }} className="btn btn-primary">
+      {props.children}
+    </button>
+  );
+}
+export function FormBtnNav(props) {
+  return (
+    <button {...props} style={{ paddingTop: 5, paddingBottom: 5 }} className="btn btn-primary login-btn">
       {props.children}
     </button>
   );
