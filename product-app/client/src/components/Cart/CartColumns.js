@@ -1,7 +1,8 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {Container, Row} from "../Grid/index";
 
-export default function CartColumns() {
+export default class CartColumns extends Component {
+    render(){
         return(
                 <Container fluid>
                 <div  className="text-center d-none d-lg-block">
@@ -42,3 +43,4 @@ export default function CartColumns() {
 
         );
     }
+}

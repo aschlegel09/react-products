@@ -19,6 +19,8 @@ const keys = require('./client/src/keys');
 const passport = require('passport');
 const cookieSession = require('cookie-session');
 
+
+var User = require("./models/userModel.js");
 // const corsOption = {//
 //   origin: true,
 //   methods: 'GET, HEAD, PUT, PATCH, POST, DELETE',
@@ -29,14 +31,14 @@ const cookieSession = require('cookie-session');
 
 // oauth start
 // set up cookie session for one day and encryption
-app.use(cookieSession({
-  maxAge: 24 * 60 * 60 * 1000,
-  keys: [keys.session.cookieKey]
-}));
+// app.use(cookieSession({
+//   maxAge: 24 * 60 * 60 * 1000,
+//   keys: [keys.session.cookieKey]
+// }));
 
 // initialize passport
-app.use(passport.initialize());
-app.use(passport.session());
+// app.use(passport.initialize());
+// app.use(passport.session());
 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -65,6 +67,20 @@ mongoose.connect(keys.mongodb.dbURI || "mongodb://localhost/reactprod"
 , { useNewUrlParser: true }
 );
 
+
+let new_user = new User({
+  name:req.body.name
+, email: req.body.email
+, password: req.body.password
+, phone: req.body.phone
+, _enabled:false 
+});
+
+new_user.save(function(err){
+if(err) console.log(err); 
+});
+
+
 let db = mongoose.connection;
 db.once("open", () => console.log("connected to the database"));
 // checks if connection with the database is successful
@@ -76,6 +92,19 @@ db.on("error", console.error.bind(console, "MongoDB connection error:"));
 // app.use(cookieParser());
 // app.use(express.static(path.join(__dirname, 'public')));//
 
+// Route to post our form submission to mongoDB via mongoose
+// app.post("/submit", function(req, res) {
+//   // Create a new user using req.body
+//   User.create(req.body)
+//     .then(function(dbUser) {
+//       // If saved successfully, send the the new User document to the client
+//       res.json(dbUser);
+//     })
+//     .catch(function(err) {
+//       // If an error occurs, send the error to the client
+//       res.json(err);
+//     });
+// });
 
 // this is our get method
 // this method fetches all available data in our database

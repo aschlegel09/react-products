@@ -9,9 +9,9 @@ class Blog extends Component {
   render() {
     return (
       <div>
-      <Jumbotron>
+      <div className="heart-bg">
         <h1>News</h1>
-      </Jumbotron>
+      </div>
       <Container>
         <Row>
           <BlogComponent /><BlogComponent />

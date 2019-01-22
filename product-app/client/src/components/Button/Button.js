@@ -12,7 +12,7 @@ class Donate extends React.Component {
         <Swing>
         <Row>
           <a href="https://www.crowdrise.com/o/en/campaign/anchor-relief" target="_blank" rel="noopener noreferrer">
-          <button className="donate-btn">Donate<i className="fas fa-heart"></i>
+          <button className="donate-btn">Donate <i className="fas fa-heart"></i>
             </button></a>
                         </Row>
         </Swing>

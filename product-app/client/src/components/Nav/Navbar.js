@@ -37,9 +37,9 @@ class Navbar extends React.Component {
                 <NavLink to="/" className="p-2 bd-highlight toptext">
                     Home
                 </NavLink>
-                <NavLink to="/blog" className="p-2 bd-highlight toptext">
+                {/* <NavLink to="/blog" className="p-2 bd-highlight toptext">
                     News
-                </NavLink>
+                </NavLink> */}
                 <NavLink to="/products" className="p-2 bd-highlight toptext">
                     All Products
                 </NavLink>

@@ -1,12 +1,13 @@
 import React, { Component } from "react";
-import { Row, Container } from "../components/Grid";
+import { Col, Row, Container } from "../components/Grid";
 import HomeComponent from "../components/Home/Home";
-import BlogComponent from "../components/Blog/Blog";
+// import BlogComponent from "../components/Blog/Blog";
 import Reveal from 'react-reveal/Reveal';
 // import API from "../utils/API";
 // import { List, ListItem } from "../components/List/index";
 // import { Link } from "react-router-dom";
-// import Product from '../components/Product/Product';
+import graph from '../images/disaster-events.png';
+
 
 class Home extends Component {
     // state = {
@@ -30,15 +31,15 @@ class Home extends Component {
     //         )
     //         .catch(err => console.log(err));
     // };
-      
+
     componentDidMount() {
         window.scrollTo(0, 0)
-      }
+    }
 
-      
+
 
     render() {
-        
+
         return (
             <Container fluid className="homepage-bg">
                 <HomeComponent />
@@ -69,17 +70,23 @@ class Home extends Component {
                             </Link>
                         </ListItem>
                     </Product> */}
-                </Row>                
-                <Reveal effect="fadeInUp">
-                <Row>
-                    {/* <Product />
-                    <Product /> */}
                 </Row>
-                </Reveal>
                 <Reveal effect="fadeInUp">
-                <Row>
-                    <BlogComponent /><BlogComponent />
-                </Row>
+                    <Row>
+
+                        <Col size="md-12">
+                            <h3 className="mt-5">Our World in Data reports several key statistics<br />regarding world natural disasters and the cost on human life:</h3>
+                            <a href="https://ourworldindata.org/natural-disasters">
+                                <img src={graph} className="img-fluid" target="_blank" alt="natural-disaster graph"
+                                    style={{
+                                        minWwidth: "500px",
+                                        width: "75%",
+                                        marginTop: "50px",
+                                        marginBottom: "50px"
+                                    }} />
+                            </a>
+                        </Col>
+                    </Row>
                 </Reveal>
             </Container>
         );

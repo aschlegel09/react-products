@@ -5,32 +5,32 @@ import {Link} from 'react-router-dom';
 import {Row} from '../Grid/index';
 import { FormBtn } from '../Form/index';
 
-
 export default class Modal extends Component {
     render() {
+
         return(
             <ProductConsumer>
                 {value => {
                     // accessed via value
                     const {modalOpen, closeModal} = value;
                     // accessed in object via detailproduct
-                    const {img, name, cost} = value.modalProduct;
+                    const {img, name, id, cost} = value.modalProduct;
                     if(!modalOpen){
                         return null;
                     } else {
                         return (
                         <div className="modal-container">
                         <Row>
-                            <div className="modal-card col-md-8 p-5 mx-auto col-md-6 col-lg-4 text-center text-capitalize">
+                            <div className="modal-card p-5 mx-auto col-md-8 col-lg-8 text-center text-capitalize">
                             <h5 className="text-white">
                                 Item added to cart
                             </h5>
                             <hr />
                             <img src={img} className="img-fluid" alt="product" />
-                            <h5 className="text-white">
+                            <h5 className="m-4 text-white">
                                 {name}
                             </h5>
-                            <h5 className="text-muted">
+                            <h5 className="text-white">
                                 cost : $ {cost}
                             </h5>
                             <Link to="/products">
@@ -39,9 +39,12 @@ export default class Modal extends Component {
                                 </button>
                             </Link>
                             <Link to="/cart">
-                                <button className="add-btn"
-                                onClick={() => closeModal()}>
-                                    Add to Cart
+                                <button 
+                                key={id}
+                                className="add-btn"
+                                onClick={() => 
+                                    closeModal()}>
+                                    Checkout
                                 </button>
                             </Link>
                             

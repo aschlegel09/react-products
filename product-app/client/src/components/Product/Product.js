@@ -4,6 +4,7 @@ import Reveal from 'react-reveal/Reveal';
 import {Link} from 'react-router-dom';
 import {ProductConsumer} from '../../context';
 import PropTypes from 'prop-types';
+// import {Row} from '../Grid/index';
 
 export default class Product extends Component {
 
@@ -15,10 +16,10 @@ export default class Product extends Component {
     const { 
          id,
          name,
-        //   category,
+          category,
            cost,
             // brand,
-            //  size,
+             size,
             //   color,
                img,
                 inCart } = this.props.product;
@@ -26,14 +27,14 @@ export default class Product extends Component {
     return (
         
         <Reveal effect="fadeInUp">
-        <div className="col-md-6 mx-auto col-9 col-lg-3 my-3">
-            <div className="card" name="our" title="products"
+         {/* <Row> */}
+            <div className="card mx-auto" name="our" title="products"
             onClick={() => console.log(`clicked on card: ${id}`)}>
 
 
-<ProductConsumer>
+    <ProductConsumer>
             {value => (
-                <div className="img-container p-5" 
+                <div className="img-container" 
                  onClick={() =>{
                     // console.log(`clicked on img container id is: ${id}`)}
                     value.handleDetail(id);
@@ -42,9 +43,11 @@ export default class Product extends Component {
 
                    <Link to="/details">
                         <img src={img} className="card-img-top" alt="product"
-                        onClick={()=> console.log('image clicked')}/>
+                        // onClick={()=> console.log('image clicked')}
+                        />
                     </Link>
 
+                           {/* cart button on product page */}
                     <Link to="/cart">
                           <button className="cart-btn" alt="cart" 
                           disabled={inCart ? true : false} 
@@ -52,36 +55,30 @@ export default class Product extends Component {
                             // console.log(`added to cart! id is: ${id}`)
                             value.addToCart(id)
                            }>
-                                 {inCart ? "inCart" :  <i className="fas fa-cart-plus" />}
+                                 {inCart ? "In Cart" :  <i className="fas fa-cart-plus" />}
                
                            </button>
                     </Link>
-
-                </div>
+                {/* card footer */}
+                        <div className="card-footer justify-content-between">
+                            <p className="align-self-center mb-0">
+                                "{name}" <hr />{category} <br />${cost} <br />Dimensions: {size}
+                            </p>
+                            {/* <h5 className="text-blue font-italic mb-0">
+                                <span className="mr-1">$</span>
+                                {cost}
+                            </h5> */}
+                            </div>
+                        
+                        </div>
             )}
-</ProductConsumer>
-
-
-            {/* card footer */}
-            <div className="card-footer d-flex justify-content-between">
-            <p className="align-self-center mb-0">
-                {name}
-            </p>
-            <h5 className="text-blue font-italic mb-0">
-                <span className="mr-1">$</span>
-                {cost}
-            </h5>
-            </div>
-        
-            </div>
-        </div>
-        </Reveal>
+    </ProductConsumer>
+                     </div>
+  </Reveal>
     );
-}
-} 
-
+}}
 // proptypes will check data type inserted
-// careful of capital P
+// careful of capital P */}
 Product.propTypes = {
     product:PropTypes.shape({
     id:PropTypes.number,
@@ -92,6 +89,7 @@ Product.propTypes = {
     category:PropTypes.string, 
     brand:PropTypes.string, 
     size:PropTypes.string, 
-    color:PropTypes.string
+    color:PropTypes.string,
+    info:PropTypes.info
 })
-};
+}

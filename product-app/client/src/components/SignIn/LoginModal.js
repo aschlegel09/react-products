@@ -200,12 +200,11 @@ class LoginBox extends React.Component {
         console.log(this.state.password);
         
         const obj = {
-            person_name: this.state.person_name,
-            business_name: this.state.business_name,
-            business_gst_number: this.state.business_gst_number,
+            username: this.state.username,
+            password: this.state.password,
             contentType: "application/json"
           };
-          axios.post('http://localhost:3001/login/add', obj) 
+          axios.post('http://localhost:3001/submit', obj) 
               .then(res => console.log(res.data));
           
         // this.props.submitLogin(this.state);
@@ -259,7 +258,7 @@ class LoginBox extends React.Component {
                             <Input text="text" name="username" placeholder="username" value={this.state.username} onChange={this.onUsernameChange}></Input>
                             <small className="danger">{usernameError ? usernameError : ""}</small>
                         </div>
-
+                
                         <div>
                             <label htmlFor="password">Password</label>
                             <Input text="text" name="password" placeholder="password" value={this.state.password} onChange={this.onPasswordChange}></Input>
@@ -350,6 +349,7 @@ class RegisterBox extends React.Component {
 
     submitRegister = (e) => {
         e.preventDefault();
+
         console.log(this.state.username);
         console.log(this.state.email);
         console.log(this.state.password);

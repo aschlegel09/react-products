@@ -3,7 +3,7 @@ import {Row} from '../Grid/index';
 
 export default function EmptyCart() {
         return (
-                <div className="container mt-5">
+                <div className="heart-bg">
                 <Row>
                     <div className="col-10 mx-auto text-center">
                     <h1>

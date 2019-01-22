@@ -80,7 +80,7 @@ class App extends Component {
             <Row>
             <Col size="md-3">
                 <a href="/about" className="pt-4 foot-text">About Anchor Relief</a><br />
-                <a href="/blog" className="pb-4 foot-text">News Articles</a ><br />
+                {/* <a href="/blog" className="pb-4 foot-text">News Articles</a ><br /> */}
             </Col>
             {/* <Col size="md-3">
                 <LoginModal className="login-footer" />
@@ -97,7 +97,6 @@ class App extends Component {
             <Col size="md-3">
                 <a href="https://www.crowdrise.com/o/en/campaign/anchor-relief" target="_blank" rel="noopener noreferrer" className="pt-4 foot-text">Donate</a >
             </Col>
-            
             </Row>
             </div>
           {/* </Container> */}

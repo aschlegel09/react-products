@@ -90,7 +90,7 @@ class Detail extends Component {
                           value.openModal(id);
                         }}
                         >
-                          {inCart ? "inCart" : "Add to Your Cart"}
+                          {inCart ? "In Cart" : "Add to Your Cart"}
                           </button>
                           </Col>
                           </Row>
@@ -114,7 +114,7 @@ class Detail extends Component {
                 <hr />
               <h2>Cost</h2>
               <p>
-                {cost}
+                ${cost}
               </p>
                  <hr />
               <h2>Category</h2>

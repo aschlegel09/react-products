@@ -38,16 +38,16 @@ render() {
       {/* // <Container fluid> */}
       {/* //   <Row> */}
       {/* //   <Col size="md-12 sm-12"> */}
-      <Jumbotron>
+      <div className="heart-bg">
         <h1>User List</h1>
-      </Jumbotron>
+      </div>
       <Container>
         <Jumbotron>
           <Row>
             <Col size="md-12">
               {this.state.users.length ? (
                 <List>
-                  {this.state.users.map((user) => (
+                  {this.state.users.map((user, key) => (
                     <ListItem key={user._id}>
                       <Link to={"/profile/" + user._id}>
                         <strong>

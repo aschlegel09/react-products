@@ -6,6 +6,9 @@ import cloudyimage from "../../images/cloudy.png";
 import anchorimage from "../../images/anchor.png";
 import Fade from 'react-reveal/Fade';
 import Donate from '../Button/Button.js';
+// import Jumbotron from "../Jumbotron";
+// import Product from '../Product/Product';
+// import {ProductConsumer} from '../../context';
 
 function HomeComponent() {
     return (
@@ -38,7 +41,24 @@ function HomeComponent() {
                 </Fade>
                 
             </div>
+            <div className="heart-bg-donate">
             <Donate />
+            </div>
+            {/* <Jumbotron>
+            <ProductConsumer> */}
+            {/* this caused error */}
+            {/* {value => {
+              // return <h1>{hello}</h1>;
+              console.log(value.products);
+              // value Here of seed data
+              // since products is an array, we can map
+              return value.products.map((product) => {
+                return <Product key={product.id} product={product} />
+            
+              })
+            }} */}
+                {/* </ProductConsumer>
+            </Jumbotron> */}
         </Row>
     );
 }

@@ -1,19 +1,20 @@
 // import React from "react";
-// import { Col, Row } from "../components/Grid";
+// import { Col, Row, Container } from "../components/Grid";
 // import { Link } from 'react-router-dom';
 // import Jumbotron from '../components/Jumbotron';
-// import newCart from "../components/Cart";
+// import newCart from "../components/Cart/newCart";
 
 // function Cart() {
 //   return (
 //     <div>
-//     {/* // <Container fluid> */}
-//       {/* // <Row> */}
-//         {/* // <Col size="md-12"> */}
-//             <newCart />
-//         {/* // </Col> */}
-//       {/* // </Row> */}
-//     {/* // </Container/> */}
+//      <Container fluid>
+//      <Row>
+//      <Col size="md-12">
+//            <newCart />
+//      </Col>
+//      </Row>
+//      </Container>
+
 //     <Jumbotron>
 //         <Row>
 //           <Col size="md-2">

@@ -7,6 +7,7 @@ import { Col, Row, Container } from "../components/Grid";
 import {ProductConsumer} from '../context.js';
 // import {productSeed} from "../script/seed";
 import Product from "../components/Product/Product";
+import Fade from 'react-reveal/Fade';
 
 class Products extends Component {
 //   constructor(props) {
@@ -74,19 +75,25 @@ class Products extends Component {
     return (
       <div>
        
-        <Jumbotron>
+       <div className="heart-bg">
           <h1>Product List</h1>
+          </div>
+        {/* <Jumbotron> */}
+          
+          <Fade up>
           {/* whatever I have in context consumer return here */}
+          
           <ProductConsumer>
             {/* this caused error */}
             {value => {
-              // return <h1>{hello}</h1>;
+
               console.log(value.products);
               // value Here of seed data
               // since products is an array, we can map
               return value.products.map((product) => {
                 return <Product key={product.id} product={product} />
             });
+
             }}
             
             {/* {value => { */}
@@ -95,7 +102,6 @@ class Products extends Component {
               
           {/* // Product */}
            
-        
               {/* /* <ListItem key={product.id}>
             //   <Link to={"/products/" + product.id}>
             //     <strong>
@@ -104,7 +110,8 @@ class Products extends Component {
             //   </Link>
             // </ListItem>  */}
           </ProductConsumer>
-        </Jumbotron>
+          </Fade>
+        {/* </Jumbotron> */}
         <Container>
           {/* <Jumbotron>
             <Row>
@@ -136,8 +143,9 @@ class Products extends Component {
               backgroundColor: "red",
               width: "120px",
               height: "auto",
-              padding: "10px"
-            }}>Donate<i className="fas fa-heart"></i></button></a>
+              padding: "10px",
+              cursor: "pointer"
+            }}>Donate <i className="fas fa-heart"></i></button></a>
           </Jumbotron>
           <Jumbotron>
         <Row>
