@@ -1,6 +1,7 @@
 {
   "name": "mern",
   "version": "0.1.0",
+  "homepage" : "http://myname.github.io/myapp",
   "private": true,
   "proxy": "http://localhost:3001/",
   "dependencies": {
@@ -14,7 +15,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "postinstall": "npm run build"
   },
   "browserslist": [
     ">0.2%",

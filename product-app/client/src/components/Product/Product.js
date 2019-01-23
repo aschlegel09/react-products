@@ -62,7 +62,7 @@ export default class Product extends Component {
                 {/* card footer */}
                         <div className="card-footer justify-content-between">
                             <p className="align-self-center mb-0">
-                                "{name}" <hr />{category} <br />${cost} <br />Dimensions: {size}
+                                "{name}" <br />{category} <br />${cost} <br />Dimensions: {size}
                             </p>
                             {/* <h5 className="text-blue font-italic mb-0">
                                 <span className="mr-1">$</span>
