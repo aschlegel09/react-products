@@ -1,0 +1,238 @@
+.anchor-font, h1 {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 900;
+}
+
+.add-btn {
+    border-color: yellowgreen;
+    background-color: yellowgreen;
+    color: darkblue;
+    margin-bottom: 55px;
+}
+
+.add-btn:hover {
+  border-color:darkblue;
+    background-color:lightcyan;
+    color: darkblue;
+}
+
+.btn-block {
+  background: transparent;
+  text-transform: capitalize;
+  font-size: 0.8 rem !important;
+  color: darkblue;
+  border-radius: 0 !important;
+  border: 0.1rem solid darkblue !important;
+  padding: 10px;
+  width: 10%;
+  height: 10%;
+  margin-bottom: 0;
+  bottom: 0;
+  margin-top: 8px;
+}
+
+.btn-block:hover {
+  background: darkblue !important;
+  color: white !important;
+}
+
+.cart-div {
+  min-height: 1000px;
+}
+
+.cart-icon {
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: coral;
+}
+
+.numbers {
+  background-image: url("./images/disaster-events.png");
+  background-size: 1000px;
+}
+
+p, h2, h3, h4, h5, a, button, label, select, input, .btn, div {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
+}
+
+body  {
+  color:#000;
+  text-align:center;
+  background: url("./images/diamond-pattern.png");
+  background-repeat: repeat;
+}
+
+.heart-bg {
+  background-image: url('./images/heart-bg.png');
+  background-repeat: no-repeat;
+  text-align: center;
+  color: darkblue;
+  height: 350px;
+  margin-top: 40px;
+  padding-top: 150px;
+}
+
+.heart-bg-donate {
+  background-image: url('./images/heart-bg.png');
+  background-repeat: no-repeat;
+  text-align: center;
+  color: darkblue;
+  height: 200px;
+  margin-top: -50px;
+  padding-top: 150px;
+  width: 2000px;
+}
+
+
+button, .button {
+  background-color: lightblue;
+  border-radius: 25px;
+  padding: 5px 10px;
+  margin: 10px 10px;
+  box-shadow: 4px 4px #333;
+  border: 1px solid gray;
+}
+
+button:hover, .button:hover {
+  background-color: white;
+  color: black;
+  box-shadow: 8px 8px #333;
+}
+
+.chris-long {
+  background-image: url("./images/chrislongfoundation.png");
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: 240px;
+  height: 85px;
+  transform: scale(.7);
+  transition: all .6s ease-in-out;
+  border: 2px solid white;
+}
+
+.chris-long:hover {
+  position:relative;
+  display:block;
+  transition: all 1.0s ease-in-out;
+  transform: scale(1.1);
+  background-color: white;
+}
+
+.footer-logo {
+  top: 0;
+  min-width: 40px;
+  width: 60px;
+  border-radius: 50px;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  transition: all 4s ease-in-out;
+}
+
+/* .footer-logo:hover {
+  zoom: 1.2;
+  transition: all 4s ease-in-out;
+} */
+
+.footer {
+  background-image: url('./images/heart-bg-flipped.png');
+  background-repeat: no-repeat;
+  position: relative;
+  width: 100%;
+  min-height: 300px;
+  background-color: #333;
+  bottom: 0;
+  margin-bottom: 0;
+  padding-top: 20px;
+  border-top: solid lightcoral 10px;
+  padding-bottom: 0;
+  right: 0;
+  left: 0;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.foot-text {
+  text-decoration: none;
+  color: white;
+  transition: all .6s ease-in-out;
+}
+
+.foot-text:hover {
+  text-decoration: none;
+  font-size: 150%;
+  color: coral;
+  transition: all .6s ease-in-out;
+}
+
+.product-img {
+  width: 80%;
+  height: 150px;
+  border-radius: 25px 25px 0px 0px;
+}
+
+.fa-anchor {
+-webkit-animation: App-logo-spin 5s linear 1;
+-webkit-animation-fill-mode: forwards;
+animation: App-logo-spin 4s alternate infinite;
+animation-fill-mode: forwards;
+animation-timing-function: linear; /* or: ease, ease-in, ease-in-out, linear, cubic-bezier(x1, y1, x2, y2) */
+}
+
+.text-blue {
+  color: darkblue;
+  letter-spacing: 2px;
+}
+
+.danger {
+  color: red;
+  font-size: 15px;
+}
+
+/* .turtleBay {
+  background-image: url("./images/turtleBay.png");
+  background-repeat: no-repeat;
+  position: relative;
+  width: 250px;
+} */
+
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(-35deg);
+  }
+  to {
+    transform: rotate(35deg);
+  }
+
+}
+
+
+/* Media queries */
+/* -------------------------------------- */
+/* Large desktop */
+@media (min-width: 1200px) {
+ 
+}
+
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px) {
+  
+}
+
+/* Landscape phone to portrait tablet */
+@media (max-width: 802px) {
+  .login-btn {
+    margin-top: 60px;
+  }
+}
+
+/* Landscape phones and down */
+@media (max-width: 480px) {
+ 
+}
+
+/* -------------------------------------- */

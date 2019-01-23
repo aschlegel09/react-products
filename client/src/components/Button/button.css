@@ -1,0 +1,38 @@
+.donate-btn {
+  -webkit-animation: buttonFade 5s linear 1;
+  -webkit-animation-fill-mode: forwards;
+  animation: buttonFade 4s alternate infinite;
+  animation-fill-mode: forwards;
+  animation-timing-function: linear; /* or: ease, ease-in, ease-in-out, linear, cubic-bezier(x1, y1, x2, y2) */
+  color: white;
+  background-color: red;
+  width: 120px;
+  height: auto;
+  padding: 10px;
+  margin-left: 23%;
+}
+
+.donate-btn:hover {
+    color: white;
+    background-color: green;
+    cursor: pointer;
+}
+
+
+@-webkit-keyframes buttonFade {
+    from {
+        opacity: 0.35;
+    }
+    to {
+        opacity: 1;
+    }
+    }
+    
+    @keyframes buttonFade {
+        from {
+            opacity: 0.35;
+        }
+        to {
+            opacity: 1;
+        }
+        }

@@ -1,0 +1,288 @@
+.homepage-bg {
+    background-repeat: no-repeat;
+    width: 1800px;
+  background-size: contain;
+  -webkit-animation: backgroundScroll 5s linear 1;
+  -webkit-animation-fill-mode: forwards;
+  animation: backgroundScroll 15s reverse infinite;
+  animation-fill-mode: forwards;
+  animation-timing-function: linear; /* or: ease, ease-in, ease-in-out, linear, cubic-bezier(x1, y1, x2, y2) */
+  margin-top: -400px;
+  margin-left: -1000px;
+  position: absolute;
+  z-index: 10; 
+  transform: scale(.4);
+}
+
+.home-font {
+    font-size: 24px;
+}
+
+.humanity-road {
+    background-image: url("../../images/humanityroadsm.png");
+    background-repeat: no-repeat;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 141px;
+    height: 85px;
+    transform: scale(.7);
+    transition: all .6s ease-in-out;
+    border: 2px solid white;
+  }
+  
+  .chris-long {
+    background-image: url("../../images/chrislongfoundation.png");
+    background-repeat: no-repeat;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 240px;
+    height: 85px;
+    transform: scale(.7);
+    transition: all .6s ease-in-out;
+    border: 2px solid white;
+  }
+  
+  .chris-long:hover, .humanity-road:hover {
+    position:relative;
+    display:block;
+    transition: all 1.0s ease-in-out;
+    transform: scale(1.1);
+    background-color: white;
+  }
+  
+
+.cloudy {
+    background-image: url("../../images/cloudy.png");
+    background-position: fixed;
+    background-repeat: no-repeat;
+    position: absolute;
+    z-index: 6;
+    left: 0;
+    margin-left: 0px;
+    width: 100%;
+    height: auto;
+}
+
+.jumbo {
+    height: 1000px;
+}
+
+.fullscreen-bg {
+    position: relative;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    width:100%;
+    display:block;
+}
+
+
+@-webkit-keyframes backgroundScroll {
+    from {
+        left: 150%;
+    }
+    to {
+        left: 0;
+    }
+    }
+    
+    @keyframes backgroundScroll {
+        from {
+            left: 150%;
+        }
+        to {
+            left: -25%;
+        }
+        }
+    
+        
+/* Media queries */
+/* -------------------------------------- */
+@media (min-width: 1201px) {
+    .anchor-font {
+        margin-left: -120px;
+        margin-top: -50px;
+        padding: 20px 20px;
+        letter-spacing: 10px;
+        font-size: 63px;
+        margin-bottom: 40px;
+    }
+
+    .cloudy {
+        height: auto;
+        width: 100%;
+    }
+
+    .home-font {
+        font-size: 36px;
+        margin-left: -150px;
+    }
+
+    .humanity-road {
+        margin-left: 0px;
+        margin-top: 50px;
+    }
+
+    .chris-long {
+        margin-left: 40px;
+        margin-top: 50px;
+    }
+}
+
+/* Large desktop */
+@media (min-width: 980px) and (max-width: 1200px) {
+    .homepage-bg {
+        width: 1200px;
+        margin-top: 40px;
+        margin-left: -620px;
+        transform: scale(.45);
+      }
+
+      .anchor-font {
+        margin-left: 60px;
+        margin-top: -50px;
+        padding: 10px 10px;
+        letter-spacing: 5px;
+        font-size: 90px;
+    }
+
+    .cloudy {
+        height: 1000px;
+        width: auto;
+    }
+
+    .home-font {
+        font-size: 28px;
+        margin-left: 60px;
+
+    }
+
+    .humanity-road {
+        margin-left: 60px;
+        margin-top: 50px;
+    }
+
+    .chris-long {
+        margin-left: 120px;
+        margin-top: 50px;
+    }
+}
+
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 767px) and (max-width: 979px) {
+    .homepage-bg {
+      width: 979px;
+      margin-top: 220px;
+      margin-left: -400px;
+      transform: scale(.4);
+    }
+
+    .anchor-font {
+        margin-left: 120px;
+        margin-top: -120px;
+        font-size: 90px;
+        margin-bottom: 30px;
+    }
+
+    .cloudy {
+        height: 1200px;
+        width: auto;
+        margin-left: -200px;
+    }
+
+    .home-font {
+        font-size: 23px;
+        margin-left: 140px;
+    }
+
+    .humanity-road {
+        margin-left: 80px;
+        margin-top: 10px;
+    }
+
+    .chris-long {
+        margin-left: 120px;
+        margin-top: 10px;
+    }
+}
+
+/* Landscape phone to portrait tablet */
+@media (min-width: 481px) and (max-width: 766px) {
+    .homepage-bg {
+        width: 767px;
+        margin-top: 320px;
+        margin-left: -400px;
+        transform: scale(.35);
+      }
+
+      .anchor-font {
+        font-size: 90px;
+        margin-left: 100px;
+        margin-top: -100px;
+        padding: 10px 10px;
+    }
+
+    .cloudy {
+        height: 950px;
+        width: auto;
+        margin-left: -500px;
+    }
+
+    .home-font {
+        font-size: 24px;
+        margin-left: 80px;
+    }
+
+    .humanity-road {
+        margin-left: 330px;
+    }
+
+    .chris-long {
+        margin-left: 130px;
+    }
+}
+
+/* Landscape phones and down */
+@media (max-width: 480px) {
+    .homepage-bg {
+        width: 480px;
+        margin-top: 480px;
+        transform: scale(.4);
+        margin-left: -280px;
+      }
+
+      .anchor-font {
+        font-size: 60px;
+        margin-left: 170px;
+        margin-top: -150px;
+        margin-bottom: 60px;
+    }
+
+    .cloudy {
+        height: 950px;
+        width: auto;
+        margin-left: -500px;
+    }
+
+    .home-font {
+        font-size: 24px;
+        margin-left: 170px;
+        margin-bottom: 40px;
+    }
+
+    .humanity-road {
+        margin-left: 330px;
+    }
+
+    .chris-long {
+        margin-left: 130px;
+    }
+}
+
+/* -------------------------------------- */
