@@ -47,7 +47,7 @@
 }
 
 .numbers {
-  background-image: url("./images/disaster-events.png");
+  background-image: url("../public/images/disaster-events.png");
   background-size: 1000px;
 }
 
@@ -59,12 +59,12 @@ p, h2, h3, h4, h5, a, button, label, select, input, .btn, div {
 body  {
   color:#000;
   text-align:center;
-  background: url("./images/diamond-pattern.png");
+  background: url("../public/images/diamond-pattern.png");
   background-repeat: repeat;
 }
 
 .heart-bg {
-  background-image: url('./images/heart-bg.png');
+  background-image: url('../public/images/heart-bg.png');
   background-repeat: no-repeat;
   text-align: center;
   color: darkblue;
@@ -74,7 +74,7 @@ body  {
 }
 
 .heart-bg-donate {
-  background-image: url('./images/heart-bg.png');
+  background-image: url('../public/images/heart-bg');
   background-repeat: no-repeat;
   text-align: center;
   color: darkblue;
@@ -101,7 +101,7 @@ button:hover, .button:hover {
 }
 
 .chris-long {
-  background-image: url("./images/chrislongfoundation.png");
+  background-image: url("../public/images/chrislongfoundation.png");
   background-repeat: no-repeat;
   position: absolute;
   left: 0;
@@ -138,7 +138,7 @@ button:hover, .button:hover {
 } */
 
 .footer {
-  background-image: url('./images/heart-bg-flipped.png');
+  background-image: url('../public/images/heart-bg-flipped.png');
   background-repeat: no-repeat;
   position: relative;
   width: 100%;
