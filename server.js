@@ -20,7 +20,7 @@ const passport = require('passport');
 const cookieSession = require('cookie-session');
 
 
-var User = require("./models/userModel.js");
+// var User = require("./models/userModel.js");
 // const corsOption = {//
 //   origin: true,
 //   methods: 'GET, HEAD, PUT, PATCH, POST, DELETE',
@@ -71,17 +71,17 @@ mongoose.connect(keys.mongodb.dbURI || "mongodb://localhost/reactprod"
 );
 
 
-let new_user = new User({
-  name:req.body.name
-, email: req.body.email
-, password: req.body.password
-, phone: req.body.phone
-, _enabled:false 
-});
+// let new_user = new User({
+//   name:req.body.name
+// , email: req.body.email
+// , password: req.body.password
+// , phone: req.body.phone
+// , _enabled:false 
+// });
 
-new_user.save(function(err){
-if(err) console.log(err); 
-});
+// new_user.save(function(err){
+// if(err) console.log(err); 
+// });
 
 
 let db = mongoose.connection;
