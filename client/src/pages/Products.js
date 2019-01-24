@@ -8,6 +8,9 @@ import {ProductConsumer} from '../context.js';
 // import {productSeed} from "../script/seed";
 import Product from "../components/Product/Product";
 import Fade from 'react-reveal/Fade';
+import '../images/heart-bg.png';
+import '../images/heart-bg-flipped.png';
+import '../images/diamond-pattern.png';
 
 class Products extends Component {
 //   constructor(props) {

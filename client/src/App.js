@@ -18,6 +18,9 @@ import Profile from "./pages/Profile";
 import ScrollToTop from "./components/Scroll/Scroll";
 import Modal from "./components/Product/Modal";
 import footerImage from './images/logo.png';
+import '../images/heart-bg.png';
+import '../images/heart-bg-flipped.png';
+import '../images/diamond-pattern.png';
 // import {ProductProvider} from './context.js';
 // import LoginModal from "./components/SignIn/LoginModal";
 
