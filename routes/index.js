@@ -49,7 +49,7 @@ router.use("/api", apiRoutes);
 // make it client/build/index when in production
 // If no API routes are hit, send the React app
 router.use(function (req, res) {
-  res.sendFile(path.join(__dirname, "../client/public/index.html"));
+  res.sendFile(path.join(__dirname, "../client/build/index.html"));
 });
 
 module.exports = router;
