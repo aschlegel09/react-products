@@ -1,7 +1,7 @@
 {
   "name": "mern",
   "version": "0.1.0",
-  "homepage" : "http://myname.github.io/myapp",
+  "homepage": "http://myname.github.io/myapp",
   "private": true,
   "proxy": "http://localhost:3001/",
   "dependencies": {
@@ -16,7 +16,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "postinstall": "npm run build"
+    "postinstall": "npm run build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "browserslist": [
     ">0.2%",
